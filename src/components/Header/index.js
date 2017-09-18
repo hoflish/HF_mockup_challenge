@@ -24,6 +24,8 @@ class Header extends Component {
              Browse <i data-feather="chevron-down" />
            </div>
          </div>
+         <div className="hf-header__nav-item hf-menu"><i data-feather="menu"/></div>
+
          {/* User info */}
          <div className="hf-header__right">
 

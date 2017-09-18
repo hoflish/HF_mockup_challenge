@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from "../Header";
 import HeroSection from "../HeroSection";
 import NavBar from "../NavBar/index";
+import Main from "../Main/index";
 
 export default class App extends Component {
 
@@ -12,9 +13,15 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <HeroSection />
-        <NavBar />
+        <div className="cover">
+          <Header />
+          <HeroSection />
+          <NavBar />
+        </div>
+        <div>
+          <Main />
+          <div />
+        </div>
       </div>
     );
   }
