@@ -1,0 +1,95 @@
+.hf-hero {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  padding: 40px;
+}
+
+.hf-hero__avatar,
+.hf-hero__content {
+  align-items: stretch;
+  border: 0 solid #000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+
+.hf-hero__avatar {
+  padding-right: 30px;
+  flex-shrink: 0;
+}
+
+.hf-hero__avatar-large > img {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 50%;
+}
+
+.hf-hero__content {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 40px 24px;
+}
+
+.hf-hero__description {
+  margin-top: 16px;
+}
+
+.hf-hero__title {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 36px;
+}
+
+.hf-hero__follow {
+  display: flex;
+  align-items: center;
+}
+
+.hf-hero__follow-number {
+  float: left;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.hf-hero__follow-left {
+  float: right;
+  display: flex;
+  align-items:center;
+}
+
+.hf-icon {
+  margin: 0 8px;
+  vertical-align: middle;
+}
+
+.btn {
+  max-width: 177px;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  color: rgba(0,0,0,.987);
+  font-size: 16px;
+  padding: 4px 16px;
+  line-height: 18px;
+  background: rgba(0,0,0,.05);
+}
+
+.btn-primary {
+  background-color: #E23943;
+  color: #eeeeee;
+}
+
+.btn:focus {
+  outline: none;
+}
+

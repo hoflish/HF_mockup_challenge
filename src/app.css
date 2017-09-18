@@ -1,42 +1,98 @@
 @import "~normalize.css";
 
-header {
-  background-color: transparent;
-  height: 48px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
 }
 
-.hf-header {
-  position: relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+img,
+embed,
+object,
+audio,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  vertical-align: baseline;
+}
+
+small {
+  font-size: 0.8em;
+}
+
+span {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+#root, body, html {
   height: 100%;
 }
 
-.hf-header__left {
-  display: flex;
-}
-
-.hf-header__middle {
-  display: flex;
-  flex-grow: 1;
-  margin-left: 64px;
-}
-
-.hf-header__right {
-  display: flex;
-  align-items: center;
-}
-
-.hf-header__nav-item {
-  align-items: center;
-  display: flex;
-  font-size: 1rem;
-  padding: 6px 8px;
+#root {
+  z-index: 0;
 }
 
 a {
@@ -45,34 +101,6 @@ a {
   cursor: pointer;
 }
 
-.hf-header__nav-item .hf-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 22px;
-}
-
-.hf-header__nav-item .hf-logo > span {
-  color: #E23943;
-}
-
-.hf-header__icon {
-  height: 24px;
-  width: 24px;
-  position: relative;
-  vertical-align: middle;
-  margin: 0 8px;
-}
-
-.hf-avatar {
-  height: 36px;
-  width: 36px;
-  position: relative;
-  vertical-align: middle;
-}
-
-.hf-avatar img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  position: relative;
+a:hover {
+  text-decoration: none;
 }
