@@ -60,6 +60,7 @@ header {
   width: 36px;
   position: relative;
   vertical-align: middle;
+  margin-left: 8px;
 }
 
 .hf-avatar > img {
