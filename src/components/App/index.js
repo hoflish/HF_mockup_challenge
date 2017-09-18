@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from "../Header";
 import HeroSection from "../HeroSection";
+import NavBar from "../NavBar/index";
 
 export default class App extends Component {
 
@@ -13,6 +14,7 @@ export default class App extends Component {
       <div>
         <Header />
         <HeroSection />
+        <NavBar />
       </div>
     );
   }
