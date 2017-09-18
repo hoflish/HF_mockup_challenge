@@ -2526,6 +2526,10 @@ fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
+feather-icons@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/feather-icons/-/feather-icons-3.2.2.tgz#96c132e4a401d5cc18c03063c87999f47dce442b"
+
 figures@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
@@ -5284,6 +5288,13 @@ react-scripts@1.0.13:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "1.1.2"
+
+react-test-renderer@^15.6.1:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.6.1.tgz#026f4a5bb5552661fd2cc4bbcd0d4bc8a35ebf7e"
+  dependencies:
+    fbjs "^0.8.9"
+    object-assign "^4.1.0"
 
 "react@^15 || ^16", react@^15.6.1:
   version "15.6.1"
