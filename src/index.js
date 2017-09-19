@@ -1,9 +1,11 @@
 import React from 'react';
 import {render} from 'react-dom';
 import feather from 'feather-icons';
-import App from './components/App';
 import './app.css';
+import Root from './routes';
+import configureStore from './store';
 
+const store = configureStore();
 
-render(<App />, document.getElementById('root'));
+render(<Root store={store} />, document.getElementById('root'));
 feather.replace();
