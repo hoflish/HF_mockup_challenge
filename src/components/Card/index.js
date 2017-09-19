@@ -15,16 +15,14 @@ class Card extends Component {
     return (
       <div className="hf-card">
         {/* images  */}
-        <div style={style} className="hf-card__image card__image--fence">
-
-        </div>
+        <div style={style} className="hf-card__image"></div>
 
         <div className="hf-card__content">
           {/* Restaurant  */}
             <div className="hf-card__content-top">
-              <h1 className="hf-card__name">Asiate</h1>
-              <span className="vb hf-icon"><i data-feather="star"/></span>
-              <span className="vb">5</span>
+              <h1 className="hf-card__restaurant-name">Asiate</h1>
+              <span className="rating-color hf-icon"><i data-feather="star"/></span>
+              <span className="rating-color">5</span>
             </div>
 
           {/*Restaurant likes*/}

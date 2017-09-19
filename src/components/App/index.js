@@ -20,8 +20,12 @@ export default class App extends Component {
         </div>
         <div>
           <Main />
+          {/* maps */}
           <div />
         </div>
+
+        {/* Footer */}
+        <div></div>
       </div>
     );
   }
