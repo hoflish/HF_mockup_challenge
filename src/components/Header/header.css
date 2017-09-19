@@ -1,6 +1,5 @@
 header {
-  /*background: linear-gradient(to bottom right, rgba(39, 48, 66, 0), rgba(39, 48, 66, 0.987));*/
-  /*background: -webkit-linear-gradient(to bottom right, rgba(39, 48, 66, 1), rgba(39, 48, 66, 0.987));*/
+  background-color: transparent;
   height: 70px;
   color: #eeeeee;
 }
@@ -65,9 +64,25 @@ header {
   margin-left: 8px;
 }
 
-.hf-avatar > img {
+.hf-avatar img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   position: relative;
+}
+
+.hf-browse {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+a[role="button"]:focus {
+  outline: 0;
+}
+
+.account_dropdown .mdc-menu-anchor {
+  position: absolute;
+  top: 70px;
+  right: 20px;
 }

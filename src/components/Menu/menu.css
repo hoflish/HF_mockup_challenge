@@ -1,0 +1,46 @@
+.mdc-simple-menu {
+  background-color: #273042;
+  border-radius: 5px;
+  background-clip: padding-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border: 0;
+}
+
+.mdc-list > .mdc-list-item {
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  color: #F8FAFF;
+  cursor: pointer;
+  list-style: none;
+  margin: 0;
+  padding: 5px 20px 3px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.dropDown-item-hover {
+  background-color: #6d819c;
+  text-decoration: none;
+}
+
+.ui-menuItem--icon {
+  height: 24px;
+  width: 24px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  padding-top: 1px;
+  padding-right: 6px;
+}
+
+.sep {
+  user-select: none;
+  border-top: 1px solid #ebebeb;
+  margin-top: 5px;
+  margin-bottom: 6px;
+}
+

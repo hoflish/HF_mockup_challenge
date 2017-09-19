@@ -30,6 +30,11 @@
   align-items: center;
 }
 
+.hf-nav__filter-dropdown .mdc-menu-anchor {
+  top: 30px;
+  position: absolute;
+}
+
 .hf-nav__filter {
   margin-right: 80px;
 }
@@ -86,10 +91,14 @@
     position: relative;
   }
 
+  .hf-nav {
+    flex-direction: column;
+  }
+
   .hf-nav__filter {
     order: 2;
     float: left;
-    margin-right: auto;
+    margin-right: 0;
   }
 
   .hf-nav__filter-dropdown {
@@ -99,6 +108,10 @@
   .hf-hero {
     flex-direction: column;
     align-items: center;
+  }
+
+  .react-tabs {
+    border-bottom: 1px solid #6d819c;
   }
 
 }
@@ -112,9 +125,6 @@
   }
   .react-tabs__tab {
     margin-right: auto;
-  }
-  .hf-nav__filter {
-    display: none;
   }
   .react-tabs {
     width: 100%;
