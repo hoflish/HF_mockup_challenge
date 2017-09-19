@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import FormField from "../FormField/index";
-
+import './auth.css';
 
 export default class AuthRegister extends Component {
 
@@ -18,6 +18,7 @@ export default class AuthRegister extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
   handleEmailChange(e) {
@@ -32,10 +33,22 @@ export default class AuthRegister extends Component {
     });
   }
 
+  handleNameChange(e) {
+    this.setState({
+      name: e.target.value,
+    });
+
+  }
+
   validateEmail(email) {
-    let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return emailRegex.test(email);
   };
+
+  validateName(name) {
+    const nameRegex = /^[a-zA-Z\\s]*$/;
+    return nameRegex.test(name);
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -55,6 +68,10 @@ export default class AuthRegister extends Component {
       _errors.password = 'Password field is required';
     }
 
+    if (name === '') {
+      _errors.name = 'Name field is required';
+    }
+
     /* check email validity
        => render error message for invalid email */
 
@@ -64,8 +81,14 @@ export default class AuthRegister extends Component {
       }
     }
 
+    if(name) {
+      if(!this.validateName(name)) {
+        _errors.name = 'Invalid name';
+      }
+    }
+
     // state errors
-    if (_errors.email || _errors.password) {
+    if (_errors.email || _errors.password || _errors.name) {
       this.setState({
         errors: _errors,
       });
@@ -77,6 +100,7 @@ export default class AuthRegister extends Component {
   }
 
   onSave(email, password, name) {
+
   }
 
 
@@ -88,25 +112,24 @@ export default class AuthRegister extends Component {
       <section className="hf-register__section">
         <main className="hf-register__main hf-register__main--flex" role="main">
           <article className="hf-register__content">
-
             <div className="hf-register__form--wrapper">
               <div className="hf-register__form--box">
                 {/* Logo */}
-                <h1 className="hf-logo">IDEADATE</h1>
+                <h1></h1>
 
                 {/* Form Fields */}
                 <div>
-                  <form className="uiForm" onSubmit={this.handleSubmit}>
+                  <form className="hf-form" onSubmit={this.handleSubmit}>
 
                     {/* Name Field */}
                     <div className="hf-formfield__positioner">
-                      <div className="hasError">{errors.email ? errors.email : null}</div>
+                      <div className="hasError">{errors.name ? errors.name : null}</div>
                       <FormField>
                         <input type="text" name="name" className="hf-input"
                                aria-label="Name" aria-required="true"
                                placeholder="Your Name" maxLength="30"
                                autoCapitalize="off" autoCorrect="off"
-                               onChange={() => {}}
+                               onChange={this.handleNameChange}
                         />
                       </FormField>
                     </div>
@@ -127,19 +150,19 @@ export default class AuthRegister extends Component {
                     {/* Password Field */}
                     <div className="hf-formfield__positioner">
                       <div className="hasError">{errors.password ? errors.password : null}</div>
-                      <div className="hf-formfield">
+                      <FormField>
                         <input type="password" name="password" className="hf-input"
                                aria-label="Password" aria-required="true"
                                placeholder="Password"
                                autoCapitalize="off" autoCorrect="off"
                                onChange={this.handlePasswordChange}
                         />
-                      </div>
+                      </FormField>
                     </div>
 
                     {/* Submit Button */}
-                    <div className="hf-formfield__block hf-formfield__margin">
-                      <input type="submit" className="" value="sign up"/>
+                    <div className="hf-formfield__block text-center hf-formfield__margin">
+                      <input type="submit" className="btn btn-primary"  value="sign up"/>
                     </div>
 
                     {/* seperator (or) */}
@@ -159,9 +182,9 @@ export default class AuthRegister extends Component {
               </div>
 
               {/* have an account => sign in */}
-              <div className="hf-form__box">
+              <div className="hf-register__form--box">
                 <p className="small-text">
-                  {`Already Have an account ?`}
+                  {`Already have an account ?`}
                   <a className="" href="#"> Sign in</a>
                 </p>
               </div>

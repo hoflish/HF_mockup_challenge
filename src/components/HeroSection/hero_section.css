@@ -88,11 +88,14 @@
   line-height: 18px;
   height: 36px;
   background: rgba(0,0,0,.05);
+  cursor: pointer;
 }
 
 .btn-primary {
   background-color: #E23943;
   color: #eeeeee;
+  background-image: -webkit-linear-gradient(to bottom,rgba(226, 57, 67,0),rgba(226, 57, 67,0.02));
+  background-image: linear-gradient(to bottom,rgba(226, 57, 67,0),rgba(226, 57, 67,0.02));
 }
 
 .btn:focus {
