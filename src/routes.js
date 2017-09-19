@@ -4,12 +4,13 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import App from './components/App';
 import DevTools from './containers/DevTools';
+import AuthRegister from "./components/AuthRegister";
 
 const Root = ({store}) => (
   <Provider store={store}>
     <Router>
      <div>
-       <Route exact path="/" component={() => <div>home</div>} />
+       <Route exact path="/register" component={AuthRegister} />
        <Route path="/app" component={App} />
        <Route path="/about" component={() => <div>about</div>} />
        <Route path="/contact" component={() => <div>contact</div>}/>

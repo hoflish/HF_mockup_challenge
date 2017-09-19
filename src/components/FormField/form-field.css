@@ -1,0 +1,16 @@
+.uiForm-field {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #262626;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 100%;
+  border: 1px solid #e6e6e6;;
+}
+
+.uiForm-field {
+  background-color: #f6f8fa;
+}
