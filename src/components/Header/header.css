@@ -86,3 +86,39 @@ a[role="button"]:focus {
   top: 70px;
   right: 20px;
 }
+
+.responsive-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.responsive-menu__content {
+  background-color: rgba(39, 48, 66, 0.987);
+  position: relative;
+  min-height: 400px;
+  text-align: center;
+  padding: 20px 64px;
+}
+
+.responsive-menu__content li {
+  display: block;
+  line-height: 36px;
+  position: relative;
+  list-style: none;
+  cursor: pointer;
+  font-size: 40px;
+  padding: 16px 0;
+}
+
+.close {
+  position: absolute;
+  top: 25px;
+  left: 35px;
+}
+
+.close a {
+  color: white;
+}

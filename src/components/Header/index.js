@@ -10,26 +10,29 @@ class Header extends Component {
     super(props);
 
     this.state = {
-      isBrowsMenuOpen: false,
+      isBrowseMenuOpen: false,
       isAccountMenuOpen: false,
+      isResponsiveMenuOpen: false,
     };
 
     this.onOpenAccountMenu = this.onOpenAccountMenu.bind(this);
     this.onCloseAccountMenu = this.onCloseAccountMenu.bind(this);
     this.onOpenBrowseMenu = this.onOpenBrowseMenu.bind(this);
     this.onCloseBrowseMenu = this.onCloseBrowseMenu.bind(this);
+    this.onOpenResponsiveMenu = this.onOpenResponsiveMenu.bind(this);
+    this.onCloseResponsiveMenu = this.onCloseResponsiveMenu.bind(this);
   }
 
   onOpenBrowseMenu(e) {
     e.preventDefault();
     this.setState({
-      isBrowsMenuOpen: true,
+      isBrowseMenuOpen: true,
     });
   }
 
   onCloseBrowseMenu() {
     this.setState({
-      isBrowsMenuOpen: false,
+      isBrowseMenuOpen: false,
     });
   }
 
@@ -46,8 +49,22 @@ class Header extends Component {
     });
   }
 
+  onOpenResponsiveMenu(e) {
+    e.preventDefault();
+    this.setState({
+      isResponsiveMenuOpen: true,
+    });
+  }
+
+  onCloseResponsiveMenu(e) {
+    e.preventDefault();
+    this.setState({
+      isResponsiveMenuOpen: false,
+    });
+  }
+
   render() {
-    const {isAccountMenuOpen, isBrowsMenuOpen} = this.state;
+    const {isAccountMenuOpen, isBrowseMenuOpen, isResponsiveMenuOpen} = this.state;
 
     return (
       <header>
@@ -67,11 +84,27 @@ class Header extends Component {
               <div className="mdc-menu-anchor">
                 <Menu items={BROWSE_MENU}
                       onClose={this.onCloseBrowseMenu}
-                      open={isBrowsMenuOpen}/>
+                      open={isBrowseMenuOpen}/>
               </div>
             </div>
           </div>
-          <div className="hf-header__nav-item hf-menu"><i data-feather="menu"/></div>
+          <div className="hf-header__nav-item hf-menu">
+            <a href="#" role="button" onClick={this.onOpenResponsiveMenu}><i data-feather="menu"/></a>
+            {isResponsiveMenuOpen ?
+              <div className="responsive-menu">
+                  <ul className="responsive-menu__content">
+                    <span className="close">
+                      <a role="button" onClick={this.onCloseResponsiveMenu} href="#">X</a>
+                    </span>
+
+                    <li><a href="">Link</a></li>
+                    <li><a href="">Link</a></li>
+                    <li><a href="">Link</a></li>
+                    <li><a href="">Link</a></li>
+                  </ul>
+              </div>
+              : null}
+          </div>
 
           {/* User info */}
           <div className="hf-header__right">
