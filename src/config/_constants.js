@@ -13,9 +13,9 @@ export const ACTIONS = {
 
 // App menu items
 export const BROWSE_MENU = [
-  {ref: 'browse_menu', menu_item_click: 'menu_home_page', link: "home_page"},
-  {ref: 'browse_menu', menu_item_click: 'menu_about_page', link: "about_page"},
-  {ref: 'browse_menu', menu_item_click: 'menu_contact_page', link: "contact_page"},
+  {ref: 'browse_menu', menu_item_click: 'menu_home_page', link: "home"},
+  {ref: 'browse_menu', menu_item_click: 'menu_about_page', link: "about"},
+  {ref: 'browse_menu', menu_item_click: 'menu_contact_page', link: "contact"},
 ];
 
 export const ACCOUNT_MENU = [

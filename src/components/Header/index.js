@@ -3,6 +3,10 @@ import me from '../../images/me.jpg';
 import './header.css';
 import Menu from '../Menu';
 import {BROWSE_MENU, ACCOUNT_MENU} from "../../config/_constants"
+import {Link, withRouter} from "react-router-dom";
+import {connect} from 'react-redux';
+import {authenticate} from '../../actions/authActions';
+
 
 class Header extends Component {
 
@@ -65,6 +69,7 @@ class Header extends Component {
 
   render() {
     const {isAccountMenuOpen, isBrowseMenuOpen, isResponsiveMenuOpen} = this.state;
+    // const {isLoggedIn} = this.props;
 
     return (
       <header>
@@ -89,26 +94,23 @@ class Header extends Component {
             </div>
           </div>
           <div className="hf-header__nav-item hf-menu">
-            <a href="#" role="button" onClick={this.onOpenResponsiveMenu}><i data-feather="menu"/></a>
+            <a href="#" className="menu-icon" role="button" onClick={this.onOpenResponsiveMenu}><i data-feather="menu"/></a>
             {isResponsiveMenuOpen ?
               <div className="responsive-menu">
                   <ul className="responsive-menu__content">
                     <span className="close">
                       <a role="button" onClick={this.onCloseResponsiveMenu} href="#">X</a>
                     </span>
-
-                    <li><a href="">Link</a></li>
-                    <li><a href="">Link</a></li>
-                    <li><a href="">Link</a></li>
-                    <li><a href="">Link</a></li>
+                    <li><Link to="/home" >Home</Link></li>
+                    <li><Link to="/about" >About</Link></li>
+                    <li><Link to="/contact" >Contact</Link></li>
                   </ul>
               </div>
               : null}
           </div>
 
           {/* User info */}
-          <div className="hf-header__right">
-
+          {this.props.authenticated ? <div className="hf-header__right">
             {/* notification icon */}
             <span className="hf-header__icon">
              <i data-feather="bell"/>
@@ -134,11 +136,24 @@ class Header extends Component {
                       open={isAccountMenuOpen}/>
               </div>
             </div>
-          </div>
+          </div> :
+            <div className="hf-auth__buttons hf-header__right">
+              <span className="hf-header__nav-item">
+                <Link to="/login">sign in</Link>
+              </span>
+              <span className="hf-header__nav-item">
+                <Link to="/register">sign up</Link>
+              </span>
+            </div>}
         </div>
       </header>
     )
   }
 }
 
-export default Header;
+const mapStateToProps = (state, ownProps) => ({
+  authenticated: state.authenticated,
+});
+
+
+export default withRouter(connect(mapStateToProps)(Header));

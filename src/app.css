@@ -136,30 +136,5 @@ ul {
   opacity: .8;
 }
 
-.hf-menu {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .hf-header__middle {
-    order: 1;
-    flex-grow: 0;
-    margin-left: 0;
-    display: none;
-  }
-  .hf-header__left {
-    order: 2;
-    flex-grow: 1;
-  }
-
-  .hf-header__right {
-    order: 3;
-    float: right;
-  }
-
-  .hf-menu {
-    display: block;
-  }
-}
 
 
