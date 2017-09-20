@@ -1,4 +1,4 @@
-import {REGISTER_NEW_ACCOUNT} from "../actions/actionTypes";
+import {REGISTER_NEW_ACCOUNT, AUTHENTICATE_USER} from "../actions/actionTypes";
 
 let initialState = {
   authenticated: false,
@@ -8,7 +8,9 @@ let initialState = {
 const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_NEW_ACCOUNT:
-      return Object.assign({}, state, {user: action.user})
+      return Object.assign({}, state, {user: action.user});
+    case AUTHENTICATE_USER:
+      return Object.assign({}, state, {user: action.user}, {authenticated: action.authenticated})
   }
   return state;
 };

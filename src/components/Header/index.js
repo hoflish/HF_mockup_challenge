@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
+import me from '../../images/me.jpg';
 import './header.css';
 import Menu from '../Menu';
-import {BROWSE_MENU} from "../../config/_constants"
-import {Link} from "react-router-dom";
+import {BROWSE_MENU, ACCOUNT_MENU} from "../../config/_constants"
+import {Link, withRouter} from "react-router-dom";
+import {connect} from 'react-redux';
+import {authenticate} from '../../actions/authActions';
 
 
-export default class Header extends Component {
+class Header extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      isLoggedIn: false,
       isBrowseMenuOpen: false,
       isAccountMenuOpen: false,
       isResponsiveMenuOpen: false,
@@ -23,12 +25,6 @@ export default class Header extends Component {
     this.onCloseBrowseMenu = this.onCloseBrowseMenu.bind(this);
     this.onOpenResponsiveMenu = this.onOpenResponsiveMenu.bind(this);
     this.onCloseResponsiveMenu = this.onCloseResponsiveMenu.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      isLoggedIn: this.state.authenticated,
-    });
   }
 
 
@@ -74,7 +70,7 @@ export default class Header extends Component {
 
   render() {
     const {isAccountMenuOpen, isBrowseMenuOpen, isResponsiveMenuOpen} = this.state;
-    // const {isLoggedIn} = this.props;
+    const {authenticated, user} = this.props;
 
     return (
       <header>
@@ -102,56 +98,63 @@ export default class Header extends Component {
             <a href="#" className="menu-icon" role="button" onClick={this.onOpenResponsiveMenu}><i data-feather="menu"/></a>
             {isResponsiveMenuOpen ?
               <div className="responsive-menu">
-                <ul className="responsive-menu__content">
+                  <ul className="responsive-menu__content">
                     <span className="close">
                       <a role="button" onClick={this.onCloseResponsiveMenu} href="#">X</a>
                     </span>
-                  <li><Link to="/home">Home</Link></li>
-                  <li><Link to="/about">About</Link></li>
-                  <li><Link to="/contact">Contact</Link></li>
-                </ul>
+                    <li><Link to="/home" >Home</Link></li>
+                    <li><Link to="/about" >About</Link></li>
+                    <li><Link to="/contact" >Contact</Link></li>
+                  </ul>
               </div>
               : null}
           </div>
 
           {/* User info */}
-          {/*<div className="hf-header__right">*/}
-          {/*/!* notification icon *!/*/}
-          {/*<span className="hf-header__icon">*/}
-          {/*<i data-feather="bell"/>*/}
-          {/*</span>*/}
+          {authenticated ? <div className="hf-header__right">
+            {/* notification icon */}
+            <span className="hf-header__icon">
+             <i data-feather="bell"/>
+           </span>
 
-          {/*/!* like icon *!/*/}
-          {/*<span className="hf-header__icon">*/}
-          {/*<i data-feather="heart"/>*/}
-          {/*</span>*/}
+            {/* like icon */}
+            <span className="hf-header__icon">
+             <i data-feather="heart"/>
+           </span>
 
-          {/*/!* avatar  *!/*/}
-          {/*<div className="hf-avatar">*/}
-          {/*<img src={me} alt=""/>*/}
-          {/*</div>*/}
+            {/* avatar  */}
+            <div className="hf-avatar">
+              <img src={user.avatar} alt=""/>
+            </div>
 
-          {/*/!* user profile (dropdown) *!/*/}
-          {/*<div className="account_dropdown">*/}
-          {/*<a href="#" className="hf-browse" role="button" onClick={this.onOpenAccountMenu}>*/}
-          {/*<i data-feather="chevron-down"/>*/}
-          {/*</a>*/}
-          {/*<div className="mdc-menu-anchor">*/}
-          {/*<Menu items={ACCOUNT_MENU} onClose={this.onCloseAccountMenu}*/}
-          {/*open={isAccountMenuOpen}/>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-          {/*</div> :*/}
-          <div className="hf-auth__buttons hf-header__right">
+            {/* user profile (dropdown) */}
+            <div className="account_dropdown">
+              <a href="#" className="hf-browse" role="button" onClick={this.onOpenAccountMenu}>
+                <i data-feather="chevron-down"/>
+              </a>
+              <div className="mdc-menu-anchor">
+                <Menu items={ACCOUNT_MENU} onClose={this.onCloseAccountMenu}
+                      open={isAccountMenuOpen}/>
+              </div>
+            </div>
+          </div> :
+            <div className="hf-auth__buttons hf-header__right">
               <span className="hf-header__nav-item">
                 <Link to="/login">sign in</Link>
               </span>
-            <span className="hf-header__nav-item">
+              <span className="hf-header__nav-item">
                 <Link to="/register">sign up</Link>
               </span>
-          </div>
+            </div>}
         </div>
       </header>
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => ({
+  authenticated: state.authReducer.authenticated,
+  user: state.authReducer.user,
+});
+
+export default withRouter(connect(mapStateToProps)(Header));

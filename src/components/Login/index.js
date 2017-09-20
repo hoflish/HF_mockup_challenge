@@ -1,20 +1,16 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom'
 import FormField from "../FormField/index";
-import _ from 'lodash';
+import {Link, withRouter} from "react-router-dom";
+import {connect} from "react-redux";
 import * as authActions from '../../actions/authActions';
-import {Link} from 'react-router-dom';
+import {bindActionCreators} from "redux";
 
-class AuthRegister extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      name: '',
       email: '',
       password: '',
       errors: {},
@@ -23,8 +19,8 @@ class AuthRegister extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this);
   }
+
 
   handleEmailChange(e) {
     this.setState({
@@ -38,24 +34,11 @@ class AuthRegister extends Component {
     });
   }
 
-  handleNameChange(e) {
-    this.setState({
-      name: e.target.value,
-    });
-
-  }
-
-  validateEmail(email) {
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return emailRegex.test(email);
-  };
-
   handleSubmit(event) {
     event.preventDefault();
 
     const email = this.state.email.trim();
     const password = this.state.password;
-    const name = this.state.name;
     let _errors = {};
 
 
@@ -69,22 +52,6 @@ class AuthRegister extends Component {
       _errors.password = 'Password field is required';
     }
 
-    if (name === '') {
-      _errors.name = 'Name field is required';
-    }
-
-    /* check email validity
-       => render error message for invalid email */
-
-    if (email.length) {
-      if (!this.validateEmail(email)) {
-        _errors.email = 'Invalid email';
-      }
-    }
-
-    if (!_.isString(name) || name.length <= 2 || name.length > 15) {
-      _errors.name = 'Invalid name';
-    }
 
     // state errors
     if (_errors.email || _errors.password || _errors.name) {
@@ -95,42 +62,21 @@ class AuthRegister extends Component {
     }
 
     // if data is valid, submit to client-side storage (just for development purposes)
-    this.onSave(name, email, password);
+    this.props.actions.logInUser(email, password);
   }
 
-  onSave(name, email, password) {
-    this.props.actions.createNewAccount(name, email, password)
-  }
 
   render() {
     const {errors} = this.state;
-
-    return (
-
+    return(
       <section className="hf-register__section">
         <main className="hf-register__main hf-register__main--flex" role="main">
           <article className="hf-register__content">
             <div className="hf-register__form--wrapper">
               <div className="hf-register__form--box">
-                {/* Logo */}
-                <h1></h1>
-
                 {/* Form Fields */}
                 <div>
                   <form className="hf-form" onSubmit={this.handleSubmit}>
-                    {/* Name Field */}
-                    <div className="hf-formfield__positioner">
-                      <div className="hasError">{errors.name ? errors.name : null}</div>
-                      <FormField>
-                        <input type="text" name="name" className="hf-input"
-                               aria-label="Name" aria-required="true"
-                               placeholder="Your Name" maxLength="30"
-                               autoCapitalize="off" autoCorrect="off"
-                               onChange={this.handleNameChange}
-                        />
-                      </FormField>
-                    </div>
-
                     {/* Email Field */}
                     <div className="hf-formfield__positioner">
                       <div className="hasError">{errors.email ? errors.email : null}</div>
@@ -160,15 +106,20 @@ class AuthRegister extends Component {
                     <div className="hf-formfield__block text-center hf-formfield__margin">
                       <input type="submit" className="btn btn-primary" value="sign up"/>
                     </div>
+
+                    {/* forgot password */}
+                    <div className="hf-formfield__margin text-center">
+                      <a className="small-text" href="#">Forgot password ?</a>
+                    </div>
                   </form>
                 </div>
 
               </div>
 
-              {/* have an account => sign in */}
+              {/* have not an account => sign in */}
               <div className="hf-register__form--box">
                 <p className="small-text">
-                  <span className="m-right">Already have an account ?</span><Link to="login">Sign in</Link>
+                  <span className="m-right">have not an account ?</span><Link to="/register">Sign up</Link>
                 </p>
               </div>
             </div>
@@ -176,13 +127,8 @@ class AuthRegister extends Component {
         </main>
       </section>
     );
-
   }
 }
-
-PropTypes.propTypes = {};
-
-PropTypes.defaultProps = {};
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -190,4 +136,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(AuthRegister));
+export default withRouter(connect(null, mapDispatchToProps)(Login));
