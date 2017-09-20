@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import me from '../../images/me.jpg';
 import './header.css';
 import Menu from '../Menu';
-import {BROWSE_MENU, ACCOUNT_MENU} from "../../config/_constants"
+import MenuItem from '../MenuItem';
 import {Link, withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
-import {authenticate} from '../../actions/authActions';
-
+import {bindActionCreators} from "redux";
+import * as authActions from '../../actions/authActions';
+import {saveState} from "../../localStorage";
 
 class Header extends Component {
 
@@ -68,10 +68,20 @@ class Header extends Component {
     });
   }
 
+  // this is not the proper way for handling logout
+  // TODO: ADD logout action creator
+  handleSelected(e) {
+    const path = e.target.dataset.hf;
+    if (path === 'account/logout') {
+      saveState({});
+      window.location.reload();
+    }
+  }
+
+
   render() {
     const {isAccountMenuOpen, isBrowseMenuOpen, isResponsiveMenuOpen} = this.state;
     const {authenticated, user} = this.props;
-
     return (
       <header>
         <div className="hf-header">
@@ -88,9 +98,11 @@ class Header extends Component {
                 Browse <i data-feather="chevron-down"/>
               </a>
               <div className="mdc-menu-anchor">
-                <Menu items={BROWSE_MENU}
-                      onClose={this.onCloseBrowseMenu}
-                      open={isBrowseMenuOpen}/>
+                <Menu onClose={this.onCloseBrowseMenu} open={isBrowseMenuOpen}>
+                  <MenuItem text="Home" location="/" />
+                  <MenuItem text="About" location="/About" />
+                  <MenuItem text="Contact" location="/Contact" />
+                </Menu>
               </div>
             </div>
           </div>
@@ -102,7 +114,7 @@ class Header extends Component {
                     <span className="close">
                       <a role="button" onClick={this.onCloseResponsiveMenu} href="#">X</a>
                     </span>
-                    <li><Link to="/home" >Home</Link></li>
+                    <li><Link to="/" >Home</Link></li>
                     <li><Link to="/about" >About</Link></li>
                     <li><Link to="/contact" >Contact</Link></li>
                   </ul>
@@ -133,17 +145,20 @@ class Header extends Component {
                 <i data-feather="chevron-down"/>
               </a>
               <div className="mdc-menu-anchor">
-                <Menu items={ACCOUNT_MENU} onClose={this.onCloseAccountMenu}
-                      open={isAccountMenuOpen}/>
+                <Menu onClose={this.onCloseAccountMenu} open={isAccountMenuOpen}>
+                  <MenuItem text="Setting" location="settings" />
+                  <MenuItem text="Profile" location="profile" />
+                  <MenuItem text="Logout" location="account/logout" action={this.handleSelected.bind(this) }/>
+                </Menu>
               </div>
             </div>
           </div> :
             <div className="hf-auth__buttons hf-header__right">
               <span className="hf-header__nav-item">
-                <Link to="/login">sign in</Link>
+                <Link to="login">sign in</Link>
               </span>
               <span className="hf-header__nav-item">
-                <Link to="/register">sign up</Link>
+                <Link to="register">sign up</Link>
               </span>
             </div>}
         </div>
@@ -152,9 +167,15 @@ class Header extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
+}
+
 const mapStateToProps = (state, ownProps) => ({
   authenticated: state.authReducer.authenticated,
   user: state.authReducer.user,
 });
 
-export default withRouter(connect(mapStateToProps)(Header));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

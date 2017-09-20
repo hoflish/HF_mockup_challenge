@@ -1,10 +1,10 @@
 import {REGISTER_NEW_ACCOUNT, AUTHENTICATE_USER} from './actionTypes';
 import Dexie from 'dexie';
-import {get_gravatar} from '../util/get_gravatar'
+import {get_gravatar} from '../util/get_gravatar';
 
 export const registerNewAccount = (data) => ({type: REGISTER_NEW_ACCOUNT, user: data});
 
-export const authenticateUser = (isLoggedIn, data) => ({
+export const authenticate = (isLoggedIn, data) => ({
   type: AUTHENTICATE_USER,
   authenticated: isLoggedIn,
   user: data
@@ -67,7 +67,7 @@ export function logInUser(email, password) {
       if (data === undefined) {
         return false;
       } else {
-        dispatch(authenticateUser(true, data));
+        dispatch(authenticate(true, data));
         window.location.pathname = "/";
         return data;
       }
@@ -76,3 +76,4 @@ export function logInUser(email, password) {
     }).catch((err) => console.log(err))
   }
 }
+

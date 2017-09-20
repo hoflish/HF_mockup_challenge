@@ -168,7 +168,7 @@ class AuthRegister extends Component {
               {/* have an account => sign in */}
               <div className="hf-register__form--box">
                 <p className="small-text">
-                  <span className="m-right">Already have an account ?</span><Link to="login">Sign in</Link>
+                  <span className="m-right">Already have an account ?</span><Link to="/login">Sign in</Link>
                 </p>
               </div>
             </div>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {ACTIONS} from '../../config/_constants';
+import {Link} from "react-router-dom";
 
 class MenuItem extends Component {
 
@@ -29,12 +30,8 @@ class MenuItem extends Component {
     this.setState({focus: false})
   }
 
-  stopEvent(e) {
-    e.preventDefault();
-  }
-
   onAction(e) {
-    this.stopEvent(e);
+    e.preventDefault();
     if (e.isTrusted && !e.repeat) {
       let {action} = this.props;
       action && action(e);
@@ -43,19 +40,18 @@ class MenuItem extends Component {
   render() {
     const {hover, focus} = this.state;
     const classes = classNames("mdc-list-item", {"dropDown-item-hover": hover || focus});
-    const {data: metaData} = this.props;
+    const {text, location} = this.props;
 
     return (
       <li role="menuitem" tabIndex="0" className={classes}
-          onMouseDown={this.stopEvent}
           onClick={this.onAction.bind(this)}
           onMouseEnter={this.onMouseEnter.bind(this)}
           onMouseLeave={this.onMouseLeave.bind(this)}
           onFocus={this.onFocus.bind(this)}
           onBlur={this.onBlur.bind(this)}
-          data-gt={JSON.stringify(metaData)}
+          data-hf={location}
       >
-        {ACTIONS[metaData["menu_item_click"]]}
+        {text}
       </li>);
   }
 
@@ -64,7 +60,6 @@ class MenuItem extends Component {
 
 MenuItem.propTypes = {
   action: PropTypes.func,
-  data: PropTypes.object.isRequired
 };
 
 export default MenuItem;

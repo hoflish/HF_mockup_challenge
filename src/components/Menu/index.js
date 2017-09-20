@@ -140,15 +140,8 @@ class Menu extends PureComponent {
     this.foundation.destroy();
   }
 
-  handleSelected() {
-    this.refs.menu.addEventListener(strings.SELECTED_EVENT, (e) => {
-      let obj = JSON.parse(e.detail.item.dataset.gt);
-      window.location.pathname = '/' + obj.link;
-    });
-  }
-
   render() {
-    const {openFrom, className, ...otherProps} = this.props;
+    const {openFrom, className, children, ...otherProps} = this.props;
     const {classes} = this.state;
     const MenuClasses = classNames(
       cssClasses.ROOT,
@@ -157,7 +150,6 @@ class Menu extends PureComponent {
       classes.toJS().join(' ')
     );
     const ListClasses = classNames('mdc-list', strings.ITEMS_SELECTOR);
-    const {items: MENU} = this.props;
 
     return (
       <div ref="menu"
@@ -166,9 +158,7 @@ class Menu extends PureComponent {
       >
         <ul className={ListClasses} role='menu'
             aria-hidden={true} ref='menuItemsContainer'>
-          {MENU.map((item, key) => (
-            <MenuItem key={key} data={item} action={this.handleSelected.bind(this)}/>
-          ))}
+          {children}
         </ul>
       </div>
     )
