@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom'
 import FormField from "../FormField/index";
 import './auth.css';
+import _ from 'lodash';
+import * as authActions from '../../actions/authActions';
 
-export default class AuthRegister extends Component {
+class AuthRegister extends Component {
 
   constructor(props) {
     super(props);
@@ -45,11 +50,6 @@ export default class AuthRegister extends Component {
     return emailRegex.test(email);
   };
 
-  validateName(name) {
-    const nameRegex = /^[a-zA-Z\\s]*$/;
-    return nameRegex.test(name);
-  }
-
   handleSubmit(event) {
     event.preventDefault();
 
@@ -57,6 +57,7 @@ export default class AuthRegister extends Component {
     const password = this.state.password;
     const name = this.state.name;
     let _errors = {};
+
 
     /* check if email and password are both empty string
        => render error message for empty fields (required field...) */
@@ -75,16 +76,14 @@ export default class AuthRegister extends Component {
     /* check email validity
        => render error message for invalid email */
 
-    if (email) {
+    if (email.length) {
       if (!this.validateEmail(email)) {
         _errors.email = 'Invalid email';
       }
     }
 
-    if(name) {
-      if(!this.validateName(name)) {
-        _errors.name = 'Invalid name';
-      }
+    if (!_.isString(name) || name.length <= 2 || name.length > 15) {
+      _errors.name = 'Invalid name';
     }
 
     // state errors
@@ -96,13 +95,12 @@ export default class AuthRegister extends Component {
     }
 
     // if data is valid, submit to client-side storage (just for development purposes)
-    this.onSave(email, password, name);
+    this.onSave(name, email, password);
   }
 
-  onSave(email, password, name) {
-
+  onSave(name, email, password) {
+    this.props.actions.createNewAccount(name, email, password)
   }
-
 
   render() {
     const {errors} = this.state;
@@ -120,7 +118,6 @@ export default class AuthRegister extends Component {
                 {/* Form Fields */}
                 <div>
                   <form className="hf-form" onSubmit={this.handleSubmit}>
-
                     {/* Name Field */}
                     <div className="hf-formfield__positioner">
                       <div className="hasError">{errors.name ? errors.name : null}</div>
@@ -159,10 +156,9 @@ export default class AuthRegister extends Component {
                         />
                       </FormField>
                     </div>
-
                     {/* Submit Button */}
                     <div className="hf-formfield__block text-center hf-formfield__margin">
-                      <input type="submit" className="btn btn-primary"  value="sign up"/>
+                      <input type="submit" className="btn btn-primary" value="sign up"/>
                     </div>
 
                     {/* seperator (or) */}
@@ -200,3 +196,11 @@ export default class AuthRegister extends Component {
 PropTypes.propTypes = {};
 
 PropTypes.defaultProps = {};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(AuthRegister));

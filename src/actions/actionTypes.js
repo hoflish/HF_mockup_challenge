@@ -1,1 +1,1 @@
-export const CHANGE_AUTH = "CHANGE_AUTH";
+export const REGISTER_NEW_ACCOUNT = "REGISTER_NEW_ACCOUNT";

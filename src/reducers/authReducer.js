@@ -1,9 +1,14 @@
-import {CHANGE_AUTH} from "../actions/actionTypes";
+import {REGISTER_NEW_ACCOUNT} from "../actions/actionTypes";
 
-const AuthReducer = (state = false, action) => {
+let initialState = {
+  authenticated: false,
+  user: {},
+};
+
+const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CHANGE_AUTH:
-      return action.payload;
+    case REGISTER_NEW_ACCOUNT:
+      return Object.assign({}, state, {user: action.user})
   }
   return state;
 };

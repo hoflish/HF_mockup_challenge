@@ -10,11 +10,12 @@ const Root = ({store}) => (
   <Provider store={store}>
     <Router>
      <div>
-       <Route exact path="/register" component={AuthRegister} />
-       <Route path="/app" component={App} />
+       <Route exact path="/" component={App} />
+       <Route path="/login" component={() => <div>Login</div>} />
+       <Route path="/register" component={AuthRegister} />
        <Route path="/about" component={() => <div>about</div>} />
        <Route path="/contact" component={() => <div>contact</div>}/>
-       <Route component={() => <div>NotFound</div>}/>
+       <Route compoenent={() => <div>Not Found</div>}/>
        <DevTools />
      </div>
     </Router>

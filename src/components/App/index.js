@@ -14,15 +14,14 @@ export default class App extends Component {
     return (
       <div>
         <div className="cover">
-          <Header />
-          <HeroSection />
-          <NavBar />
+          <Header/>
+          <HeroSection/>
+          <NavBar/>
         </div>
         <div>
-          <Main />
+          <Main/>
         </div>
       </div>
     );
   }
 }
-
