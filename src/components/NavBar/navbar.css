@@ -10,8 +10,7 @@
   flex-direction: column;
 }
 
-.react-tabs__tab,
-.hf-nav__filter-dropdown {
+.react-tabs__tab{
   display: inline-block;
   border: 0;
   bottom: -1px;
@@ -25,18 +24,34 @@
   color: white;
 }
 
-.hf-nav__filter-dropdown {
+.hf-nav__filter {
+  margin: 16px 20px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #eeeeee;
 }
 
-.hf-nav__filter-dropdown .mdc-menu-anchor {
-  top: 30px;
-  position: absolute;
+.hf-nav__filter-items {
+  list-style: none;
+  margin-left: 16px;
 }
 
-.hf-nav__filter {
-  margin-right: 80px;
+.hf-nav__filter-items li {
+  display: inline-block;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 4px;
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.hf-nav__filter-items a {
+  color: #273042;
+}
+
+.active-filter {
+  border-bottom: 2px solid #273042;
 }
 
 .react-tabs__tab--selected {
@@ -73,6 +88,13 @@
   background: #fff;
 }
 
+.react-tabs__tab-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
 @media(max-width: 768px) {
   .react-tabs__tab-list {
     position: relative;
@@ -83,9 +105,6 @@
   .react-tabs__tab {
     margin-right: auto;
   }
-  /*.hf-nav__filter {*/
-    /*display: none;*/
-  /*}*/
   .react-tabs {
     width: 100%;
     position: relative;
@@ -93,16 +112,6 @@
 
   .hf-nav {
     flex-direction: column;
-  }
-
-  .hf-nav__filter {
-    order: 2;
-    float: left;
-    margin-right: 0;
-  }
-
-  .hf-nav__filter-dropdown {
-    margin-right: 0;
   }
 
   .hf-hero {

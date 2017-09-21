@@ -38,20 +38,6 @@ class NavBar extends Component {
 
     return (
       <nav className="hf-nav">
-        {/*<div className="hf-nav__filter">*/}
-          {/*<div className="hf-nav__filter-dropdown">*/}
-            {/*<a href="#" className="hf-browse" role="button" onClick={this.onOpenFilterMenu}>*/}
-              {/*<span>POPULAR</span> <i data-feather="chevron-down"/>*/}
-            {/*</a>*/}
-            {/*<div className="mdc-menu-anchor">*/}
-              {/*<Menu onClose={this.onCloseFilterMenu} open={isFilterMenuOpen}>*/}
-                {/*<MenuItem text="Popular" location="#" />*/}
-                {/*<MenuItem text="New" location="#" />*/}
-                {/*<MenuItem text="Editors choice" location="#" />*/}
-              {/*</Menu>*/}
-            {/*</div>*/}
-          {/*</div>*/}
-        {/*</div>*/}
         <Tabs>
           <TabList>
             <Tab>AFFORDABLE</Tab>
@@ -75,6 +61,7 @@ class NavBar extends Component {
             </div>
           </div>
         </Tabs>
+
       </nav>
     )
   }
