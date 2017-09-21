@@ -49,7 +49,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Using HTTPS in Development](#using-https-in-development)
 - [Generating Dynamic `<meta>` Tags on the Server](#generating-dynamic-meta-tags-on-the-server)
 - [Pre-Rendering into Static HTML Files](#pre-rendering-into-static-html-files)
-- [Injecting Data from the Server into the Page](#injecting-data-from-the-server-into-the-page)
+- [Injecting Data from the Server into the Page](#injecting-name-from-the-server-into-the-page)
 - [Running Tests](#running-tests)
   - [Filename Conventions](#filename-conventions)
   - [Command Line Interface](#command-line-interface)
@@ -625,7 +625,7 @@ With Webpack, using static assets like images and fonts works similarly to CSS.
 
 You can **`import` a file right in a JavaScript module**. This tells Webpack to include that file in the bundle. Unlike CSS imports, importing a file gives you a string value. This value is the final path you can reference in your code, e.g. as the `src` attribute of an image or the `href` of a link to a PDF.
 
-To reduce the number of requests to the server, importing images that are less than 10,000 bytes returns a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) instead of a path. This applies to the following file extensions: bmp, gif, jpg, jpeg, and png. SVG files are excluded due to [#1153](https://github.com/facebookincubator/create-react-app/issues/1153).
+To reduce the number of requests to the server, importing images that are less than 10,000 bytes returns a [name URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) instead of a path. This applies to the following file extensions: bmp, gif, jpg, jpeg, and png. SVG files are excluded due to [#1153](https://github.com/facebookincubator/create-react-app/issues/1153).
 
 Here is an example:
 
@@ -809,7 +809,7 @@ Your project can consume variables declared in your environment as if they were 
 default you will have `NODE_ENV` defined for you, and any other environment variables starting with
 `REACT_APP_`.
 
-**The environment variables are embedded during the build time**. Since Create React App produces a static HTML/CSS/JS bundle, it can’t possibly read them at runtime. To read them at runtime, you would need to load HTML into memory on the server and replace placeholders in runtime, just like [described here](#injecting-data-from-the-server-into-the-page). Alternatively you can rebuild the app on the server anytime you change them.
+**The environment variables are embedded during the build time**. Since Create React App produces a static HTML/CSS/JS bundle, it can’t possibly read them at runtime. To read them at runtime, you would need to load HTML into memory on the server and replace placeholders in runtime, just like [described here](#injecting-name-from-the-server-into-the-page). Alternatively you can rebuild the app on the server anytime you change them.
 
 >Note: You must create custom environment variables beginning with `REACT_APP_`. Any other variables except `NODE_ENV` will be ignored to avoid accidentally [exposing a private key on the machine that could have the same name](https://github.com/facebookincubator/create-react-app/issues/865#issuecomment-252199527). Changing any environment variables will require you to restart the development server if it is running.
 
@@ -819,7 +819,7 @@ variable named `REACT_APP_SECRET_CODE` will be exposed in your JS as `process.en
 There is also a special built-in environment variable called `NODE_ENV`. You can read it from `process.env.NODE_ENV`. When you run `npm start`, it is always equal to `'development'`, when you run `npm test` it is always equal to `'test'`, and when you run `npm run build` to make a production bundle, it is always equal to `'production'`. **You cannot override `NODE_ENV` manually.** This prevents developers from accidentally deploying a slow development build to production.
 
 These environment variables can be useful for displaying information conditionally based on where the project is
-deployed or consuming sensitive data that lives outside of version control.
+deployed or consuming sensitive name that lives outside of version control.
 
 First, you need to have environment variables defined. For example, let’s say you wanted to consume a secret defined
 in the environment inside a `<form>`:
@@ -1177,7 +1177,7 @@ Similarly to the previous section, you can leave some placeholders in the HTML t
     </script>
 ```
 
-Then, on the server, you can replace `__SERVER_DATA__` with a JSON of real data right before sending the response. The client code can then read `window.SERVER_DATA` to use it. **Make sure to [sanitize the JSON before sending it to the client](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0) as it makes your app vulnerable to XSS attacks.**
+Then, on the server, you can replace `__SERVER_DATA__` with a JSON of real name right before sending the response. The client code can then read `window.SERVER_DATA` to use it. **Make sure to [sanitize the JSON before sending it to the client](https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0) as it makes your app vulnerable to XSS attacks.**
 
 ## Running Tests
 
@@ -1837,8 +1837,8 @@ Then run the `firebase init` command from your project’s root. You need to cho
 
     === Database Setup
 
-    Firebase Realtime Database Rules allow you to define how your data should be
-    structured and when your data can be read from and written to.
+    Firebase Realtime Database Rules allow you to define how your name should be
+    structured and when your name can be read from and written to.
 
     ? What file should be used for Database Rules? database.rules.json
     ✔  Database Rules for example-app-fd690 have been downloaded to database.rules.json.

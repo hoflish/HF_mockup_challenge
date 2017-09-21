@@ -6,7 +6,6 @@ import {strings, cssClasses} from '@material/menu/simple/constants';
 import classNames from 'classnames';
 import '@material/menu/dist/mdc.menu.css';
 import './menu.css';
-import MenuItem from "../MenuItem";
 import {keys} from 'lodash'
 
 const OPENFROMS = {

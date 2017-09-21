@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Card from "../Card";
 import PropTypes from 'prop-types';
+import Cards from "../Cards";
 
 class Main extends Component {
 
@@ -25,42 +25,29 @@ class Main extends Component {
   render() {
     const {filter} = this.state;
     return (
-      <main>
+      <div>
         <div className="hf-nav__filter">
             <span>Filter By</span>
             <ul className="hf-nav__filter-items">
-              <li className={filter === 'popular' ? 'active-filter' : ''}>
-                <a href="#" data-hf="popular" onClick={this.handleFiltersClick}>Popular</a>
+              <li className={filter === 'all' ? 'active-filter' : ''}>
+                <a href="#" data-hf="all" onClick={this.handleFiltersClick}>All</a>
               </li>
-              <li className={filter === 'new' ? 'active-filter' : ''}><a href="#" data-hf="new" onClick={this.handleFiltersClick}>New</a></li>
+              <li className={filter === 'popular' ? 'active-filter' : ''}><a href="#" data-hf="popular" onClick={this.handleFiltersClick}>Popular</a></li>
               <li className={filter === 'editors_choice' ? 'active-filter' : ''}><a href="#" data-hf="editors_choice" onClick={this.handleFiltersClick}>Editors choice</a></li>
             </ul>
         </div>
-        <ul className="cards">
-          <li className="hf-card__item">
-            <Card/>
-          </li>
-          <li className="hf-card__item">
-            <Card/>
-          </li>
-          <li className="hf-card__item">
-            <Card/>
-          </li>
-          <li className="hf-card__item">
-            <Card/>
-          </li>
-        </ul>
-      </main>
+        <Cards filter={this.state.filter}/>
+      </div>
     );
   }
 }
 
 Main.propTypes = {
-  filter: PropTypes.oneOf(['popular', 'new', 'editors_choice'])
+  filter: PropTypes.oneOf(['all', 'popular', 'editors_choice'])
 };
 
 Main.defaultProps = {
-  filter: 'popular'
+  filter: 'all'
 };
 
 export default Main;

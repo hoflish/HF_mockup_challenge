@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './hero_section.css';
-import photo from '../../images/featured_wallpaper.jpg';
 
 class HeroSection extends Component {
 
@@ -14,7 +13,7 @@ class HeroSection extends Component {
         {/* avatar iamge */}
         <div className="hf-hero__avatar">
           <div className="hf-hero__avatar-large">
-            <img src={photo} alt=""/>
+            <img src={null} alt=""/>
           </div>
         </div>
 

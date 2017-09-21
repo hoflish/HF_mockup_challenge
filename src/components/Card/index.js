@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './card.css';
-import photo from '../../images/featured_wallpaper.jpg';
 
 class Card extends Component {
 
@@ -9,28 +9,34 @@ class Card extends Component {
   }
 
   render() {
+    const {item} = this.props;
+    const pic = require('../../images/' + item.picture_src);
     const style = {
-      backgroundImage: `url(${photo})`
+      backgroundImage: `url(${pic})`
     };
     return (
       <div className="hf-card">
         {/* images  */}
-        <div style={style} className="hf-card__image"></div>
+        <div style={style} className="hf-card__image"> </div>
 
         <div className="hf-card__content">
           {/* Restaurant  */}
             <div className="hf-card__content-top">
-              <h1 className="hf-card__restaurant-name">Asiate</h1>
+              <h1 className="hf-card__restaurant-name">{item.name}</h1>
               <span className="rating-color hf-icon"><i data-feather="star"/></span>
-              <span className="rating-color">5</span>
+              <span className="rating-color">{item.rating}</span>
             </div>
 
           {/*Restaurant likes*/}
-          <div className="hf-card__content-bottom"><small>400k likes</small></div>
+          <div className="hf-card__content-bottom"><small>{`${item.likes} likes`}</small></div>
         </div>
       </div>
     )
   }
 }
+
+Card.propTypes = {
+  item: PropTypes.object,
+};
 
 export default Card;
