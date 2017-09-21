@@ -4,7 +4,7 @@ import './app.css';
 import Root from './routes';
 import configureStore from './store';
 import registerServiceWorker from './registerServiceWorker';
-import {loadState, saveState} from "./localStorage";
+import {loadState, saveState} from "./utils/localStorage";
 import throttle from 'lodash/throttle';
 
 const persistedState = loadState();

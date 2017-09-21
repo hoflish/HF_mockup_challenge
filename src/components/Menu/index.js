@@ -140,7 +140,7 @@ class Menu extends PureComponent {
   }
 
   render() {
-    const {openFrom, className, children, ...otherProps} = this.props;
+    const {openFrom, className, children} = this.props;
     const {classes} = this.state;
     const MenuClasses = classNames(
       cssClasses.ROOT,

@@ -119,7 +119,8 @@ class Login extends Component {
               {/* have not an account => sign in */}
               <div className="hf-register__form--box">
                 <p className="small-text">
-                  <span className="m-right">have not an account ?</span><Link to="/register">Sign up</Link>
+                  <span className="m-right">have not an account ?</span>
+                  <Link to="/register">Sign up</Link>
                 </p>
               </div>
             </div>
