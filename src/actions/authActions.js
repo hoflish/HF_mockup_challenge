@@ -15,9 +15,6 @@ function openDB() {
   db.version(1).stores({
     users: '++id,name,email,password,avatar'
   });
-  // db.version(2).stores({
-  //   users: '++id,name,email,password,avatar'
-  // });
   db.open().catch(function (error) {
     console.error(error);
   });

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {ACTIONS} from '../../config/_constants';
-import {Link} from "react-router-dom";
 
 class MenuItem extends Component {
 

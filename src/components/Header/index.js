@@ -6,7 +6,7 @@ import {Link, withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import * as authActions from '../../actions/authActions';
-import {saveState} from "../../localStorage";
+import {saveState} from "../../utils/localStorage";
 import defaultAvatar from '../../images/default_avatar.png';
 
 class Header extends Component {

@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import DevTools from './containers/DevTools';
 import rootReducer from './reducers';
 
-
 const configureStore = preloadState => {
 
   const store = createStore(

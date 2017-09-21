@@ -6,7 +6,6 @@ import MapContainer from "../../containers/MapContainer";
 
 class NavBar extends Component {
   render() {
-
     return (
       <nav>
         <Tabs>
@@ -31,7 +30,6 @@ class NavBar extends Component {
             </div>
           </div>
         </Tabs>
-
       </nav>
     )
   }
