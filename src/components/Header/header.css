@@ -38,7 +38,7 @@ header {
   padding: 6px 8px;
 }
 
-.hf-header__nav-item .hf-logo {
+.hf-logo {
   font-family: "Times New Roman", Arial, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -47,7 +47,7 @@ header {
   letter-spacing: 1px;
 }
 
-.hf-header__nav-item .hf-logo > span {
+.hf-logo > span {
   color: #E23943;
 }
 
