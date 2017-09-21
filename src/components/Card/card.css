@@ -53,7 +53,8 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  width: 780px;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .hf-card__item {

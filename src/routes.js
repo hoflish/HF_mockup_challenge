@@ -6,18 +6,20 @@ import App from './components/App';
 import DevTools from './containers/DevTools';
 import AuthRegister from "./components/AuthRegister";
 import Login from "./components/Login";
+// import GoogleApiComponent from "./components/GoogleApiComponent";
 
 const Root = ({store}) => (
   <Provider store={store}>
     <Router>
      <div>
        <Route exact path="/" component={App} />
+       {/*<Route exact path="/map" component={GoogleApiComponent} />*/}
        <Route path="/login" component={Login} />
        <Route path="/register" component={AuthRegister} />
        <Route path="/about" component={() => <div>about</div>} />
        <Route path="/contact" component={() => <div>contact</div>}/>
        <Route compoenent={() => <div>Not Found</div>}/>
-       <DevTools />
+       {/*<DevTools />*/}
      </div>
     </Router>
   </Provider>

@@ -1,6 +1,6 @@
 import {REGISTER_NEW_ACCOUNT, AUTHENTICATE_USER} from './actionTypes';
 import Dexie from 'dexie';
-import {get_gravatar} from '../util/get_gravatar';
+import {get_gravatar} from '../utils/get_gravatar';
 
 export const registerNewAccount = (data) => ({type: REGISTER_NEW_ACCOUNT, user: data});
 

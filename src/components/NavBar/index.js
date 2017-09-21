@@ -3,6 +3,7 @@ import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import './navbar.css';
 import Menu from "../Menu/index";
 import {FILTER_MENU} from "../../config/_constants";
+import MenuItem from "../MenuItem/index";
 
 class NavBar extends Component {
 
@@ -40,8 +41,11 @@ class NavBar extends Component {
               <span>POPULAR</span> <i data-feather="chevron-down"/>
             </a>
             <div className="mdc-menu-anchor">
-              <Menu items={FILTER_MENU} onClose={this.onCloseFilterMenu}
-                    open={isFilterMenuOpen}/>
+              <Menu onClose={this.onCloseFilterMenu} open={isFilterMenuOpen}>
+                <MenuItem text="Popular" location="#" />
+                <MenuItem text="New" location="#" />
+                <MenuItem text="Editors choice" location="#" />
+              </Menu>
             </div>
           </div>
         </div>
