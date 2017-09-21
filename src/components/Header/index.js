@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import * as authActions from '../../actions/authActions';
 import {saveState} from "../../localStorage";
+import defaultAvatar from '../../images/default_avatar.png';
 
 class Header extends Component {
 
@@ -17,6 +18,7 @@ class Header extends Component {
       isBrowseMenuOpen: false,
       isAccountMenuOpen: false,
       isResponsiveMenuOpen: false,
+      fetchAvatarError: false
     };
 
     this.onOpenAccountMenu = this.onOpenAccountMenu.bind(this);
@@ -78,6 +80,22 @@ class Header extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch(this.props.user.avatar)
+      .then(response => {
+        if (response.status === 200 && response.statusText === "OK") {
+          this.setState({
+            fetchAvatarError: false,
+          });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({
+          fetchAvatarError: true,
+        });
+      });
+  }
 
   render() {
     const {isAccountMenuOpen, isBrowseMenuOpen, isResponsiveMenuOpen} = this.state;
@@ -88,71 +106,67 @@ class Header extends Component {
           {/* App logo */}
           <div className="hf-header__left">
             <div className="hf-header__nav-item">
-              <a href="#" className="hf-logo">IDEA<span>DATE</span></a>
+              <Link className="hf-logo" to="/">IDEA<span>DATE</span></Link>
             </div>
           </div>
           {/* Browse section */}
           <div className="hf-header__middle">
             <div className="hf-header__nav-item">
               <a href="#" className="hf-browse" role="button" onClick={this.onOpenBrowseMenu}>
-                Browse <i data-feather="chevron-down"/>
+                Browse <i className="sp-icon icon--chevron_down"/>
               </a>
               <div className="mdc-menu-anchor">
                 <Menu onClose={this.onCloseBrowseMenu} open={isBrowseMenuOpen}>
-                  <MenuItem text="Home" location="/" />
-                  <MenuItem text="About" location="/About" />
-                  <MenuItem text="Contact" location="/Contact" />
+                  <MenuItem text="Home" location="/"/>
+                  <MenuItem text="About" location="/About"/>
+                  <MenuItem text="Contact" location="/Contact"/>
                 </Menu>
               </div>
             </div>
           </div>
           <div className="hf-header__nav-item hf-menu">
-            <a href="#" className="menu-icon" role="button" onClick={this.onOpenResponsiveMenu}><i data-feather="menu"/></a>
+            <a href="#" className="sp-icon icon--menu" role="button" onClick={this.onOpenResponsiveMenu} />
             {isResponsiveMenuOpen ?
               <div className="responsive-menu">
-                  <ul className="responsive-menu__content">
-                    <span className="close">
+                <ul className="responsive-menu__content">
+                    <span className="icon--close">
                       <a role="button" onClick={this.onCloseResponsiveMenu} href="#">X</a>
                     </span>
-                    <li><Link to="/" >Home</Link></li>
-                    <li><Link to="/about" >About</Link></li>
-                    <li><Link to="/contact" >Contact</Link></li>
-                  </ul>
+                  <li><Link to="/help">Help</Link></li>
+                  <li><Link to="/about">About</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
+                </ul>
               </div>
               : null}
           </div>
 
           {/* User info */}
           {authenticated ? <div className="hf-header__right">
-            {/* notification icon */}
-            <span className="hf-header__icon">
-             <i data-feather="bell"/>
-           </span>
+              {/* notification icon */}
+               <i className="sp-icon icon--bell"/>
 
-            {/* like icon */}
-            <span className="hf-header__icon">
-             <i data-feather="heart"/>
-           </span>
+              {/* like icon */}
+               <i className="sp-icon icon--heart"/>
 
-            {/* avatar  */}
-            <div className="hf-avatar">
-              <img src={user.avatar} alt=""/>
-            </div>
-
-            {/* user profile (dropdown) */}
-            <div className="account_dropdown">
-              <a href="#" className="hf-browse" role="button" onClick={this.onOpenAccountMenu}>
-                <i data-feather="chevron-down"/>
-              </a>
-              <div className="mdc-menu-anchor">
-                <Menu onClose={this.onCloseAccountMenu} open={isAccountMenuOpen}>
-                  <MenuItem text="Setting" location="settings" />
-                  <MenuItem text="Profile" location="profile" />
-                  <MenuItem text="Logout" location="account/logout" action={this.handleSelected.bind(this) }/>
-                </Menu>
+              {/* avatar  */}
+              <div className="hf-avatar">
+                <img src={this.state.fetchAvatarError ? defaultAvatar : user.avatar} alt=""/>
               </div>
-            </div>
-          </div> :
+
+              {/* user profile (dropdown) */}
+              <div className="account_dropdown">
+                <a href="#" className="hf-browse" role="button" onClick={this.onOpenAccountMenu}>
+                  <i className="sp-icon icon--chevron_down"/>
+                </a>
+                <div className="mdc-menu-anchor">
+                  <Menu onClose={this.onCloseAccountMenu} open={isAccountMenuOpen}>
+                    <MenuItem text="Setting" location="settings"/>
+                    <MenuItem text="Profile" location="profile"/>
+                    <MenuItem text="Logout" location="account/logout" action={this.handleSelected.bind(this)}/>
+                  </Menu>
+                </div>
+              </div>
+            </div> :
             <div className="hf-auth__buttons hf-header__right">
               <span className="hf-header__nav-item">
                 <Link to="login">sign in</Link>

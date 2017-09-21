@@ -9,7 +9,7 @@ class Main extends Component {
 
   render() {
     return (
-      <main className="main">
+      <main>
         {/* cards */}
         <ul className="cards">
           <li className="hf-card__item">

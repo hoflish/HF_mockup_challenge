@@ -268,9 +268,14 @@ article, main, section /*header, footer, nav, div*/
 }
 
 .main {
+  flex-direction: row;
+  flex-grow: 3;
+}
+
+.tabs-content {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
+  flex-wrap: wrap;
 }
 
 .map {
@@ -318,4 +323,34 @@ article, main, section /*header, footer, nav, div*/
 
   }
 
+}
+
+.sp-icon {
+  margin: 0 8px;
+  position: relative;
+  vertical-align: middle;
+}
+.icon--chevron_down {
+  width: 20px; height: 20px;
+  background: url('images/css_sprites.png') -10px -10px;
+}
+
+.icon--settings {
+  width: 24px; height: 24px;
+  background: url('images/css_sprites.png') -50px -10px;
+}
+
+.icon--heart {
+  width: 24px; height: 24px;
+  background: url('images/css_sprites.png') -94px -10px;
+}
+
+.icon--bell {
+  width: 24px; height: 24px;
+  background: url('images/css_sprites.png') -138px -10px;
+}
+
+.icon--menu {
+  width: 24px; height: 24px;
+  background: url('images/css_sprites.png') -182px -10px;
 }

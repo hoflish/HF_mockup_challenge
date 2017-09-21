@@ -39,8 +39,8 @@ class HeroSection extends Component {
             <div className="flex-grow"></div>
             {/* follow button */}
             <div className="hf-hero__follow-left">
-              <span><button className="btn btn-primary">Follow</button></span>
-              <span className="hf-icon"><i data-feather="settings"/></span>
+              <button className="btn btn-primary">Follow</button>
+              <i className="sp-icon icon--settings"/>
             </div>
           </div>
         </div>

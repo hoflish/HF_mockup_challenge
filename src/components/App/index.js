@@ -17,15 +17,15 @@ export default class App extends Component {
         <div className="cover">
           <Header/>
           <HeroSection/>
-          <NavBar/>
         </div>
-        <div className="wrapper">
-          <Main/>
-         <div className="map">
-           <MapContainer />
-           <input id="pac-input" className="controls" type="text" placeholder="Search for an address" />
-         </div>
-        </div>
+        <NavBar/>
+        {/*<div className="wrapper">*/}
+          {/*<Main/>*/}
+         {/*<div className="map">*/}
+           {/*<MapContainer />*/}
+           {/*<input id="pac-input" className="controls" type="text" placeholder="Search for an address" />*/}
+         {/*</div>*/}
+        {/*</div>*/}
       </div>
     );
   }

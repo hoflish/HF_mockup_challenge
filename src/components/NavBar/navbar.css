@@ -1,17 +1,17 @@
-.hf-nav {
-  display: flex;
-  align-items: center;
+.react-tabs__tab-list {
   background-color: #273042;
   padding: 0 20px;
-}
-
-.react-tabs__tab-list, .hf-nav__filter {
-  border-bottom: 1px solid transparent;
   margin: 0;
-  padding: 0;
+  border-bottom: 1px solid transparent;
 }
 
-.react-tabs__tab, .hf-nav__filter-dropdown {
+.react-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.react-tabs__tab,
+.hf-nav__filter-dropdown {
   display: inline-block;
   border: 0;
   bottom: -1px;
