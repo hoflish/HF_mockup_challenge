@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import '@material/menu/dist/mdc.menu.css';
 import './menu.css';
 import {keys} from 'lodash'
+// import {getTransformPropertyName} from "@material/menu/util";
 
 const OPENFROMS = {
   'top-left': 'mdc-simple-menu--open-from-top-left',
