@@ -1,6 +1,7 @@
-import {REGISTER_NEW_ACCOUNT, AUTHENTICATE_USER} from './actionTypes';
+import {REGISTER_NEW_ACCOUNT, AUTHENTICATE_USER, LOGOUT_USER} from './actionTypes';
 import Dexie from 'dexie';
 import {get_gravatar} from '../utils/get_gravatar';
+import {saveState} from "../utils/localStorage";
 
 export const registerNewAccount = (data) => ({type: REGISTER_NEW_ACCOUNT, user: data});
 
@@ -9,6 +10,9 @@ export const authenticate = (isLoggedIn, data) => ({
   authenticated: isLoggedIn,
   user: data
 });
+
+export const logoutUser = () => ({type: LOGOUT_USER, authenticated: false, user: {}});
+
 
 function openDB() {
   const db = new Dexie("myDatabase");
@@ -71,6 +75,14 @@ export function logInUser(email, password) {
     }).then((data) => {
       !data ? alert("Invalid credentials") : console.log("authenticated");
     }).catch((err) => console.log(err))
+  }
+}
+
+
+export function logout() {
+  return function (dispatch) {
+    saveState({});
+    dispatch(logoutUser())
   }
 }
 

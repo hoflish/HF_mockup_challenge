@@ -70,13 +70,15 @@ class Header extends Component {
     });
   }
 
-  // this is not the proper way for handling logout
-  // TODO: ADD logout action creator
   handleSelected(e) {
+    e.preventDefault();
     const path = e.target.dataset.hf;
-    if (path === 'account/logout') {
-      saveState({});
-      window.location.reload();
+    console.log(path);
+    if (path === 'logout') {
+      this.props.actions.logout();
+      window.location.pathname = '/';
+    } else {
+      window.location.pathname = path;
     }
   }
 
@@ -125,7 +127,7 @@ class Header extends Component {
             </div>
           </div>
           <div className="hf-header__nav-item hf-menu">
-            <a href="#" className="sp-icon icon--menu" role="button" onClick={this.onOpenResponsiveMenu} />
+            <a href="#" className="sp-icon icon--menu" role="button" onClick={this.onOpenResponsiveMenu}/>
             {isResponsiveMenuOpen ?
               <div className="responsive-menu">
                 <ul className="responsive-menu__content">
@@ -143,10 +145,10 @@ class Header extends Component {
           {/* User info */}
           {authenticated ? <div className="hf-header__right">
               {/* notification icon */}
-               <i className="sp-icon icon--bell"/>
+              <i className="sp-icon icon--bell"/>
 
               {/* like icon */}
-               <i className="sp-icon icon--heart"/>
+              <i className="sp-icon icon--heart"/>
 
               {/* avatar  */}
               <div className="hf-avatar">
@@ -160,19 +162,19 @@ class Header extends Component {
                 </a>
                 <div className="mdc-menu-anchor">
                   <Menu onClose={this.onCloseAccountMenu} open={isAccountMenuOpen}>
-                    <MenuItem text="Setting" location="settings"/>
-                    <MenuItem text="Profile" location="profile"/>
-                    <MenuItem text="Logout" location="account/logout" action={this.handleSelected.bind(this)}/>
+                    <MenuItem text="Setting" location="settings" action={this.handleSelected.bind(this)}/>
+                    <MenuItem text="Profile" location="profile" action={this.handleSelected.bind(this)}/>
+                    <MenuItem text="Logout" location="logout" action={this.handleSelected.bind(this)}/>
                   </Menu>
                 </div>
               </div>
             </div> :
             <div className="hf-auth__buttons hf-header__right">
               <span className="hf-header__nav-item">
-                <Link to="login">sign in</Link>
+                <Link to="/login">sign in</Link>
               </span>
               <span className="hf-header__nav-item">
-                <Link to="register">sign up</Link>
+                <Link to="/register">sign up</Link>
               </span>
             </div>}
         </div>
