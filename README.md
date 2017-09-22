@@ -31,3 +31,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. Add "NotFound" Component (rendered for unmatch path)
 5. Make google map searchable
 6. ...
+
+## Issues
+
+
+## Issues
+
+* [1](https://github.com/hoflish/HF_mockup_challenge/issues/1)
