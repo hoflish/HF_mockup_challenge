@@ -3,10 +3,6 @@ import './hero_section.css';
 
 class HeroSection extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <section className="hf-hero">

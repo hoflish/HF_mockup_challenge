@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import '@material/menu/dist/mdc.menu.css';
 import './menu.css';
 import {keys} from 'lodash'
+// import {getTransformPropertyName} from "@material/menu/util";
 
 const OPENFROMS = {
   'top-left': 'mdc-simple-menu--open-from-top-left',
@@ -140,7 +141,7 @@ class Menu extends PureComponent {
   }
 
   render() {
-    const {openFrom, className, children, ...otherProps} = this.props;
+    const {openFrom, className, children} = this.props;
     const {classes} = this.state;
     const MenuClasses = classNames(
       cssClasses.ROOT,
