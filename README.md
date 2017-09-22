@@ -37,4 +37,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Issues
 
+<<<<<<< HEAD
 * (1)[https://github.com/hoflish/HF_mockup_challenge/issues/1]
+=======
+* [1](https://github.com/hoflish/HF_mockup_challenge/issues/1)
+>>>>>>> master
