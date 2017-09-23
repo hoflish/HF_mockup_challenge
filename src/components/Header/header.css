@@ -101,7 +101,7 @@ a[role="button"]:focus {
 }
 
 .responsive-menu__content {
-  background-color: rgba(39, 48, 66, 0.897);
+  background-color: rgba(39, 48, 66, 0.987);
   position: relative;
   min-height: 600px;
   text-align: center;
@@ -125,7 +125,7 @@ a[role="button"]:focus {
 .icon--close {
   position: absolute;
   top: 26px;
-  left: 42px;
+  left: 30px;
 }
 
 .icon--close a {

@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Setup
 
-1. clone this repos 
+1. clone this repo
   * `$ git clone https://github.com/hoflish/HF_mockup_challenge.git`
   * `cd HF_mockup_challenge `
   
@@ -31,8 +31,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. Add "NotFound" Component (rendered for unmatch path)
 5. Make google map searchable
 6. ...
-
-## Issues
 
 
 ## Issues
