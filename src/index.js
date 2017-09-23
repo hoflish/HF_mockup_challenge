@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 import './app.css';
-import Root from './routes';
-import configureStore from './store';
+import Root from './containers/Routes/Root';
+import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import {loadState, saveState} from "./utils/localStorage";
 import throttle from 'lodash/throttle';

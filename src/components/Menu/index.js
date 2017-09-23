@@ -1,13 +1,13 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Set as ImmutableSet} from 'immutable';
-import {MDCSimpleMenuFoundation} from '@material/menu';
 import {strings, cssClasses} from '@material/menu/simple/constants';
+import {MDCSimpleMenuFoundation} from '@material/menu/dist/mdc.menu';
+// import {getTransformPropertyName} from "@material/menu/util";
 import classNames from 'classnames';
 import '@material/menu/dist/mdc.menu.css';
 import './menu.css';
-import {keys} from 'lodash'
-// import {getTransformPropertyName} from "@material/menu/util";
+import {keys} from 'lodash';
 
 const OPENFROMS = {
   'top-left': 'mdc-simple-menu--open-from-top-left',
