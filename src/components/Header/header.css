@@ -43,12 +43,20 @@ header {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 22px;
-  color: #eeeeee;
   letter-spacing: 1px;
 }
 
+.hf-logo {
+  color: #eeeeee;
+}
+
 .hf-logo > span {
-  color: #E23943;
+  color: #E23943 !important;
+}
+
+.back-link {
+  padding: 16px 20px;
+  font-size: 12px;
 }
 
 .hf-avatar {
@@ -128,6 +136,16 @@ a[role="button"]:focus {
   display: none;
 }
 
+.hf-auth__buttons a {
+  font-size: 12px;
+  color: white;
+}
+
+.seperator {
+  margin: 3px 8px 0;
+  color: rgba(255,255,255,.456);
+}
+
 @media (max-width: 768px) {
   .hf-header__middle {
     order: 1;
@@ -148,18 +166,16 @@ a[role="button"]:focus {
 
   .hf-menu {
     display: flex;
+    padding: 0;
   }
 
   .hf-menu .menu-icon {
     color: white;
   }
+
+  .hf-auth__buttons {
+    display: flex;
+    align-items: center;
+  }
 }
 
-.hf-auth__buttons {
-  display: flex;
-  align-items: center;
-}
-
-.hf-auth__buttons a {
-  color: white;
-}
