@@ -108,6 +108,9 @@ class AuthRegister extends Component {
     return (
 
       <section className="hf-register__section">
+        <div className="back-link">
+          <Link to="/">Back to Home</Link>
+        </div>
         <main className="hf-register__main hf-register__main--flex" role="main">
           <article className="hf-register__content">
             <div className="hf-register__form--wrapper">

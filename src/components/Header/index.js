@@ -6,7 +6,6 @@ import {Link, withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
 import * as authActions from '../../actions/authActions';
-import {saveState} from "../../utils/localStorage";
 import defaultAvatar from '../../images/default_avatar.png';
 
 class Header extends Component {
@@ -126,8 +125,8 @@ class Header extends Component {
               </div>
             </div>
           </div>
-          <div className="hf-header__nav-item hf-menu">
-            <a href="#" className="sp-icon icon--menu" role="button" onClick={this.onOpenResponsiveMenu}/>
+          <div className="hf-menu">
+            <a href="#" className="icon--menu" role="button" onClick={this.onOpenResponsiveMenu}/>
             {isResponsiveMenuOpen ?
               <div className="responsive-menu">
                 <ul className="responsive-menu__content">
@@ -170,12 +169,9 @@ class Header extends Component {
               </div>
             </div> :
             <div className="hf-auth__buttons hf-header__right">
-              <span className="hf-header__nav-item">
                 <Link to="/login">sign in</Link>
-              </span>
-              <span className="hf-header__nav-item">
+                <span className="seperator"> / </span>
                 <Link to="/register">sign up</Link>
-              </span>
             </div>}
         </div>
       </header>

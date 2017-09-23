@@ -144,6 +144,8 @@ article, section /*header, footer, nav, div*/
 .hf-register__section {
   min-height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hf-register__main {
