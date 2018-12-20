@@ -11,7 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   * `$ git clone https://github.com/hoflish/HF_mockup_challenge.git`
   * `cd HF_mockup_challenge `
   
-2.  Run `yarn install or npm install`  
+2.  Run `yarn install` or `npm install`  
 
 3. Browse to [http://localhost:3000](http://localhost:3000)
 
