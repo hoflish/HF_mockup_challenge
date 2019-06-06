@@ -6,6 +6,7 @@
     "@material/menu": "^0.4.7",
     "classnames": "^2.2.6",
     "dexie": "next",
+    "firebase": "^6.1.0",
     "google-maps-react": "^2.0.2",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",

@@ -10,6 +10,7 @@ import configureStore from "./store/configureStore";
 import registerServiceWorker from "./registerServiceWorker";
 import { loadState, saveState } from "./utils/localStorage";
 import { App } from "./app";
+import { FirebaseProvider } from "./context/firebase-context";
 
 const persistedState = loadState();
 const store = configureStore(persistedState);
@@ -24,9 +25,11 @@ store.subscribe(
 
 render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <FirebaseProvider>
+      <Router>
+        <App />
+      </Router>
+    </FirebaseProvider>
   </Provider>,
   document.getElementById("root")
 );
