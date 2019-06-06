@@ -1,11 +1,15 @@
+import "./app.css";
+
 import React from "react";
 import { render } from "react-dom";
-import "./app.css";
-import Root from "./containers/Routes/Root";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+import throttle from "lodash/throttle";
+
 import configureStore from "./store/configureStore";
 import registerServiceWorker from "./registerServiceWorker";
 import { loadState, saveState } from "./utils/localStorage";
-import throttle from "lodash/throttle";
+import { App } from "./app";
 
 const persistedState = loadState();
 const store = configureStore(persistedState);
@@ -18,6 +22,13 @@ store.subscribe(
   }, 1000)
 );
 
-render(<Root store={store} />, document.getElementById("root"));
+render(
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById("root")
+);
 
 registerServiceWorker();
