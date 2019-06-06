@@ -3,14 +3,15 @@ import "./app.css";
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
 import throttle from "lodash/throttle";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
 import registerServiceWorker from "./registerServiceWorker";
 import { loadState, saveState } from "./utils/localStorage";
 import { App } from "./app";
 import { FirebaseProvider } from "./context/firebase-context";
+import { UserProvider } from "./context/user-context";
 
 const persistedState = loadState();
 const store = configureStore(persistedState);
@@ -26,9 +27,11 @@ store.subscribe(
 render(
   <Provider store={store}>
     <FirebaseProvider>
-      <Router>
-        <App />
-      </Router>
+      <UserProvider>
+        <Router>
+          <App />
+        </Router>
+      </UserProvider>
     </FirebaseProvider>
   </Provider>,
   document.getElementById("root")

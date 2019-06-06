@@ -4,24 +4,19 @@ import { Route, Switch } from "react-router-dom";
 import DevTools from "../containers/DevTools";
 import { Home } from "../views/Home";
 import { Restaurant } from "../views/Restaurant";
-
-const baseUrl = "/";
-const aboutUrl = `${baseUrl}about/`;
-const contactUrl = `${baseUrl}contact/`;
-const accountUrl = `${baseUrl}account/`;
-const loginUrl = `${baseUrl}login/`;
-const registerUrl = `${baseUrl}register/`;
-const restaurantsUrl = `${baseUrl}restaurants/:id/`;
+import { SignUp } from "../views/SignUp";
+import { SignIn } from "../views/SignIn";
+import * as ROUTES from "./constants";
 
 const Routes = () => (
   <Switch>
-    <Route exact path={baseUrl} component={Home} />
-    <Route path={restaurantsUrl} component={Restaurant} />
-    <Route path={aboutUrl} component={() => <div>about</div>} />
-    <Route path={contactUrl} component={() => <div>contact</div>} />
-    <Route path={accountUrl} component={() => <div>account</div>} />
-    <Route path={loginUrl} component={() => <div>login</div>} />
-    <Route path={registerUrl} component={() => <div>register</div>} />
+    <Route exact path={ROUTES.baseUrl} component={Home} />
+    <Route path={ROUTES.restaurantsUrl} component={Restaurant} />
+    <Route path={ROUTES.aboutUrl} component={() => <div>about</div>} />
+    <Route path={ROUTES.contactUrl} component={() => <div>contact</div>} />
+    <Route path={ROUTES.accountUrl} component={() => <div>account</div>} />
+    <Route path={ROUTES.signInUrl} component={SignIn} />
+    <Route path={ROUTES.signUpUrl} component={SignUp} />
     <Route component={() => <div>Not found</div>} />
     <DevTools />
   </Switch>
