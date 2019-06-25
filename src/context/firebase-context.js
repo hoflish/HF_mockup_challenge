@@ -26,6 +26,22 @@ function FirebaseProvider(props) {
   return <FirebaseContext.Provider value={[state, firebase]} {...props} />;
 }
 
+function FirebaseConsumer({ children }) {
+  return (
+    <FirebaseContext.Consumer>
+      {context => {
+        if (context === undefined) {
+          throw new Error(
+            "FirebaseConsumer must be used within a FirebaseProvider"
+          );
+        }
+        const [state, firebase] = context;
+        return children({ state, firebase });
+      }}
+    </FirebaseContext.Consumer>
+  );
+}
+
 function useFirebase() {
   const context = React.useContext(FirebaseContext);
   if (context === undefined) {
@@ -39,4 +55,4 @@ function useFirebase() {
   };
 }
 
-export { FirebaseProvider, useFirebase };
+export { FirebaseProvider, FirebaseConsumer, useFirebase };

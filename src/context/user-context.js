@@ -5,7 +5,6 @@ const UserContext = React.createContext();
 
 function UserProvider(props) {
   const { state } = useFirebase();
-
   return <UserContext.Provider value={state} {...props} />;
 }
 
