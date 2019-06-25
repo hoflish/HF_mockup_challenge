@@ -24,12 +24,13 @@ const View = () => {
           <div className="is-5-tablet is-4-desktop is-3-widescreen">
             <div className="column he-signup-form">
               <div style={{marginBottom: "20px"}}>
-                <h3 className="title is-3 is-spaced">Sign up</h3>
+                <h3 className="title is-3">Sign up</h3>
                 <p className="subtitle is-6">
                   or <Link to={signInUrl}>sign in to your account</Link>
                 </p>
               </div>
               <SignUpForm firebase={firebase} />
+
             </div>
           </div>
         </div>

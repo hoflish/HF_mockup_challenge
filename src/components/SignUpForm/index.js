@@ -2,7 +2,7 @@ import React from "react";
 
 import { history } from "../../history";
 import { baseUrl } from "../../routes/constants";
-import FormField from "../FormField";
+import { FormField } from "..";
 
 const INITIAL_STATE = {
   fields: {
