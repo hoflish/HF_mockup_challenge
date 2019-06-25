@@ -25,14 +25,6 @@ class SignUpForm extends React.Component {
     this.setState({ fields, fieldErrors });
   };
 
-  validate = fields => {
-    const errors = {};
-    if (!fields.email) errors.email = "Email is required";
-    if (!fields.password) errors.password = "Password is required";
-
-    return errors;
-  };
-
   onSubmit = event => {
     const { fields } = this.state;
     const { firebase } = this.props;
