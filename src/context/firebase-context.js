@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Firebase from "../firebase";
 
 const FirebaseContext = React.createContext();
 
 function FirebaseProvider(props) {
-  const [user, setUser] = React.useState(null);
+  const firebase = new Firebase();
+  const [state, setState] = React.useState(() => {
+    const user = firebase.auth.currentUser;
+    return {
+      initializing: !user,
+      user
+    };
+  });
 
-  return (
-    <FirebaseContext.Provider value={[user, setUser, new Firebase()]} {...props} />
-  );
+  function onChange(user) {
+    setState({ initializing: false, user });
+  }
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth.onAuthStateChanged(onChange);
+    return () => unsubscribe();
+  }, []);
+
+  return <FirebaseContext.Provider value={[state, firebase]} {...props} />;
 }
 
 function useFirebase() {
@@ -17,11 +31,10 @@ function useFirebase() {
   if (context === undefined) {
     throw new Error(`useFirebase must be used within a FirebaseProvider`);
   }
-  const [user, setUser, firebase] = context;
+  const [state, firebase] = context;
 
   return {
-    user,
-    setUser,
+    state,
     firebase
   };
 }

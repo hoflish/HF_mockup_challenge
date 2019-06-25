@@ -1,14 +1,15 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 
+import { history } from "../../history";
 import { baseUrl } from "../../routes/constants";
+import FormField from "../FormField";
 
 const INITIAL_STATE = {
-  username: "",
-  email: "",
-  passwordOne: "",
-  passwordTwo: "",
-  error: null
+  fields: {
+    email: "",
+    password: ""
+  },
+  fieldErrors: {}
 };
 
 class SignUpForm extends React.Component {
@@ -17,72 +18,85 @@ class SignUpForm extends React.Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
-    const { firebase, setUser } = this.props;
-    firebase
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
-        setUser(authUser);
-        this.setState({ ...INITIAL_STATE });
-        this.props.history.push(baseUrl);
-      })
-      .catch(error => {
-        this.setState({ error });
-      });
-
-    event.preventDefault();
+  onChange = event => {
+    const { fields, fieldErrors } = this.state;
+    fields[event.target.name] = event.target.value;
+    fieldErrors[event.target.name] = "";
+    this.setState({ fields, fieldErrors });
   };
 
-  onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  validate = fields => {
+    const errors = {};
+    if (!fields.email) errors.email = "Email is required";
+    if (!fields.password) errors.password = "Password is required";
+
+    return errors;
+  };
+
+  onSubmit = event => {
+    const { fields } = this.state;
+    const { firebase } = this.props;
+    const errors = {};
+
+    event.preventDefault();
+
+    if (!fields.email) errors.email = "Email is required";
+    if (!fields.password) errors.password = "Password is required";
+    this.setState({ fieldErrors: errors });
+
+    if (Object.keys(errors).length) return;
+
+    firebase
+      .doCreateUserWithEmailAndPassword(fields.email, fields.password)
+      .then(userCredential => {
+        this.setState({ ...INITIAL_STATE });
+        history.push(baseUrl);
+      })
+      .catch(error => {
+        const { code, message } = error;
+        if (code === "auth/invalid-email") {
+          errors.email = message;
+        } else if (code === "auth/email-already-in-use") {
+          errors.email = message;
+        } else if (code === "auth/weak-password") {
+          errors.password = message;
+        } else {
+          // TODO: render this error
+          errors.serverError = "Operation not allowed";
+        }
+        this.setState({ fieldErrors: errors });
+      });
   };
 
   render() {
-    const { username, email, passwordOne, passwordTwo, error } = this.state;
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === "" ||
-      email === "" ||
-      username === "";
+    const {
+      fields: { email, password },
+      fieldErrors
+    } = this.state;
+
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
+        <FormField
           name="email"
           value={email}
-          onChange={this.onChange}
-          type="text"
           placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
+          error={fieldErrors.email}
           onChange={this.onChange}
+        />
+        <FormField
           type="password"
+          name="password"
+          value={password}
           placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
+          error={fieldErrors.password}
           onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
         />
-        <button type="submit" disabled={isInvalid}>
+        <button className="button is-success" type="submit">
           Sign Up
         </button>
-
-        {error && <p>{error.message}</p>}
       </form>
     );
   }
 }
 
-export default withRouter(SignUpForm);
+export default SignUpForm;

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { Footer, Header } from "../components";
 import Routes from "../routes";
+import { Footer, Header } from "../components";
 
 const App = () => (
   <div>
