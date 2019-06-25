@@ -52,7 +52,7 @@ class Header extends React.Component {
                   <strong>Sign up</strong>
                 </a>
                 <a className="button is-light" href={signInUrl}>
-                  Log in
+                  Sign in
                 </a>
               </div>
             </div>

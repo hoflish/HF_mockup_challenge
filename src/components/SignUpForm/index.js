@@ -2,7 +2,7 @@ import React from "react";
 
 import { history } from "../../history";
 import { baseUrl } from "../../routes/constants";
-import FormField from "../FormField";
+import { FormField } from "..";
 
 const INITIAL_STATE = {
   fields: {
@@ -23,14 +23,6 @@ class SignUpForm extends React.Component {
     fields[event.target.name] = event.target.value;
     fieldErrors[event.target.name] = "";
     this.setState({ fields, fieldErrors });
-  };
-
-  validate = fields => {
-    const errors = {};
-    if (!fields.email) errors.email = "Email is required";
-    if (!fields.password) errors.password = "Password is required";
-
-    return errors;
   };
 
   onSubmit = event => {
