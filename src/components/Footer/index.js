@@ -1,12 +1,13 @@
-import React from 'react';
-import './footer.css';
+import React from "react";
 
-export default function Footer(props) {
+const Footer = props => {
   return (
-    <footer>
-      <div className="footer-content">
-        <a href="/" className="hf-logo">IDEA<span>DATE</span></a>
+    <footer className="footer">
+      <div className="content has-text-centered">
+        <p>Footer</p>
       </div>
     </footer>
-  )
+  );
 };
+
+export default Footer;

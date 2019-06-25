@@ -1,144 +1,9 @@
-@import "~normalize.css";
+@import "~bulma/bulma.sass";
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 100%;
-  font-weight: normal;
-}
 
-ul {
-  list-style: none;
-}
-
-button,
-input,
-select,
-textarea {
-  margin: 0;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-* {
-  box-sizing: inherit;
-}
-
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-img,
-embed,
-object,
-audio,
-video {
-  height: auto;
-  max-width: 100%;
-}
-
-article,
-aside,
-figure,
-footer,
-header,
-hgroup,
-section {
-  display: block;
-}
-
-body,
-button,
-input,
-select,
-textarea {
-  font-family: 'Varela Round', Arial, sans-serif;
-  font-size: 14px;
-  line-height: 18px;
-}
-
-img {
-  max-width: 100%;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  vertical-align: baseline;
-}
-
-small {
-  font-size: 12px;
-}
-
-span {
-  font-style: inherit;
-  font-weight: inherit;
-}
-
-body {
-  overflow-y: scroll;
-}
-
-#root, body, html {
-  height: 100%;
-}
-
-#root {
-  z-index: 0;
-}
-
-a {
-  color: #4285F4;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.cover {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: url("./images/New-York-Wallpaper-Background-7.jpg") no-repeat center center;
-  background-size: cover;
-}
-
-.cover:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(to bottom, rgba(39, 48, 66, 1), rgba(39, 48, 66, 0.8));
-  background-image: -webkit-linear-gradient(to bottom, rgba(39, 48, 66, 1), rgba(39, 48, 66, 0.8));
-  opacity: .8;
-}
-
-article, section /*header, footer, nav, div*/
-{
-  align-items: stretch;
-  border: 0 solid #000;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  position: relative;
+.he-signup-form {
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .hf-register__section {
@@ -295,25 +160,25 @@ article, section /*header, footer, nav, div*/
 }
 .icon--chevron_down {
   width: 20px; height: 20px;
-  background: url('images/css_sprites.png') -10px -10px;
+  background: url('../images/css_sprites.png') -10px -10px;
 }
 
 .icon--settings {
   width: 24px; height: 24px;
-  background: url('images/css_sprites.png') -50px -10px;
+  background: url('../images/css_sprites.png') -50px -10px;
 }
 
 .icon--heart {
   width: 24px; height: 24px;
-  background: url('images/css_sprites.png') -94px -10px;
+  background: url('../images/css_sprites.png') -94px -10px;
 }
 
 .icon--bell {
   width: 24px; height: 24px;
-  background: url('images/css_sprites.png') -138px -10px;
+  background: url('../images/css_sprites.png') -138px -10px;
 }
 
 .icon--menu {
   width: 24px; height: 24px;
-  background: url('images/css_sprites.png') -182px -10px;
+  background: url('../images/css_sprites.png') -182px -10px;
 }
