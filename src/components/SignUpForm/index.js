@@ -61,7 +61,7 @@ class SignUpForm extends React.Component {
         } else if (code === "auth/weak-password") {
           errors.password = message;
         } else {
-          // TODO: render this error
+          // TODO: render this error and send it to remote error tracker
           errors.serverError = "Operation not allowed";
         }
         this.setState({ fieldErrors: errors });
@@ -79,7 +79,7 @@ class SignUpForm extends React.Component {
         <FormField
           name="email"
           value={email}
-          placeholder="Email Address"
+          placeholder="Email"
           error={fieldErrors.email}
           onChange={this.onChange}
         />
@@ -91,7 +91,7 @@ class SignUpForm extends React.Component {
           error={fieldErrors.password}
           onChange={this.onChange}
         />
-        <button className="button is-success" type="submit">
+        <button className="button is-primary is-fullwidth" type="submit">
           Sign Up
         </button>
       </form>
