@@ -5,3 +5,5 @@ export { default as SignInForm } from "./SignInForm";
 export { default as SignUpForm } from "./SignUpForm";
 export { default as FormField } from "./FormField";
 export { default as PasswordForgotForm } from "./PasswordForgotForm";
+export { default as Avatar } from "./Avatar";
+export { default as CircleLoader } from "./CircleLoader";
