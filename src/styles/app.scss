@@ -13,10 +13,12 @@
 }
 
 #he-signout-button {
+    font-size: 0.875rem;
     width: 100%;
     border: 0;
     background: none;
     cursor: pointer;
+    text-align: left;
 }
 
 #he-signout-button:hover {
@@ -30,6 +32,10 @@
 
 .navbar-end svg {
   height: 32px;
+}
+
+.navbar-burger {
+  margin-left: 0;
 }
 
 //------ spinner ---------

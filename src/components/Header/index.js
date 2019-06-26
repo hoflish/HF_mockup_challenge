@@ -2,14 +2,35 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { signInUrl, signUpUrl } from "../../routes/constants";
-
-import "./header.scss";
 import { FirebaseConsumer } from "../../context/firebase-context";
 import { Avatar } from "..";
 import CircleLoader from "../CircleLoader";
 
 class Header extends React.Component {
+  state = {
+    isMobile: false
+  };
+
+  hideMobileMenu = () => {
+    if (this.state.isMobile) {
+      this.setState({ isMobile: false });
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.hideMobileMenu);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.hideMobileMenu);
+  }
+
+  toggleMobileMenu = () => {
+    this.setState({ isMobile: !this.state.isMobile });
+  };
+
   renderAuthButtons = context => {
+    const { isMobile } = this.state;
     const {
       state: { user, initializing },
       firebase
@@ -21,13 +42,25 @@ class Header extends React.Component {
     if (user) {
       return (
         <div className="navbar-item has-dropdown is-hoverable">
-          <a>
-            <Avatar photoUrl={user.photoUrl} />
-          </a>
+          {!isMobile && (
+            <a>
+              <Avatar photoUrl={user.photoUrl} />
+            </a>
+          )}
           <div className="navbar-dropdown is-right">
-            <a className="navbar-item">About</a>
+            <a className="navbar-item" style={{ display: "flex" }}>
+              {isMobile ? (
+                <>
+                  <Avatar photoUrl={user.photoUrl} size={24} />
+                  <span style={{ margin: "2px 0 0 4px" }}>Your profile</span>
+                </>
+              ) : (
+                "Your profile"
+              )}
+            </a>
+            <a className="navbar-item">Dashboard</a>
             <a className="navbar-item">Jobs</a>
-            <a className="navbar-item">Contact</a>
+
             <hr className="navbar-divider" />
             <button
               id="he-signout-button"
@@ -52,6 +85,7 @@ class Header extends React.Component {
     );
   };
   render() {
+    const { isMobile } = this.state;
     return (
       <FirebaseConsumer>
         {context => (
@@ -61,13 +95,12 @@ class Header extends React.Component {
             aria-label="main navigation"
           >
             <div className="navbar-brand">
-              <a className="navbar-item" href="/">
-                <img src="#" width="112" height="28" alt="IdeaDate" />
-              </a>
-
               <a
+                onClick={this.toggleMobileMenu}
                 role="button"
-                className="navbar-burger burger"
+                className={`navbar-burger burger ${
+                  isMobile ? "is-active" : ""
+                }`}
                 aria-label="menu"
                 aria-expanded="false"
                 data-target="navbarBasicExample"
@@ -76,27 +109,16 @@ class Header extends React.Component {
                 <span aria-hidden="true" />
                 <span aria-hidden="true" />
               </a>
+              <a className="navbar-item" href="/">
+                <img src="#" width="112" height="28" alt="IdeaDate" />
+              </a>
             </div>
 
-            <div id="navbarBasicExample" className="navbar-menu">
-              <div className="navbar-start">
-                <a className="navbar-item">Home</a>
-
-                <a className="navbar-item">Documentation</a>
-
-                <div className="navbar-item has-dropdown is-hoverable">
-                  <a className="navbar-link">More</a>
-
-                  <div className="navbar-dropdown">
-                    <a className="navbar-item">About</a>
-                    <a className="navbar-item">Jobs</a>
-                    <a className="navbar-item">Contact</a>
-                    <hr className="navbar-divider" />
-                    <a className="navbar-item">Report an issue</a>
-                  </div>
-                </div>
-              </div>
-
+            <div
+              id="navbarBasicExample"
+              className={`navbar-menu ${isMobile ? "is-active" : ""}`}
+            >
+              <div className="navbar-start" />
               <div className="navbar-end">
                 <div className="navbar-item">
                   <div className="buttons">
