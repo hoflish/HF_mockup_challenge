@@ -12,6 +12,34 @@
   color: #157f3c;
 }
 
+#he-signout-button {
+    width: 100%;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+#he-signout-button:hover {
+  background-color: whitesmoke;
+  color: #0a0a0a;
+}
+
+.navbar-item img {
+    max-height: 2rem;
+}
+
+.he-content-loader {
+  display: flex;
+}
+
+.he-content-loader div {
+  margin: 0 4px;
+  width: 32px;
+  height: 32px; 
+  background-color: rgba(0,0,0,0.06); 
+  border-radius: 50%;
+}
+
 //-----------
 
 .hf-register__section {

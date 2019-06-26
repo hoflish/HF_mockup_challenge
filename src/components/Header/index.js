@@ -5,6 +5,7 @@ import { signInUrl, signUpUrl } from "../../routes/constants";
 
 import "./header.scss";
 import { FirebaseConsumer } from "../../context/firebase-context";
+import { Avatar } from "..";
 
 class Header extends React.Component {
   renderAuthButtons = context => {
@@ -15,13 +16,31 @@ class Header extends React.Component {
 
     if (initializing) {
       // TODO: use placeholder
-      return <span>Loading...</span>;
+      return (
+        <div className="he-content-loader">
+          <div />
+          <div />
+          <div />
+        </div>
+      );
     }
     if (user) {
       return (
-        <button className="button is-light" onClick={firebase.doSignOut}>
-          Sign out
-        </button>
+        <div className="navbar-item has-dropdown is-hoverable">
+            <a>
+              <Avatar photoUrl={user.photoUrl}/>
+            </a>
+                  <div className="navbar-dropdown is-right">
+                    <a className="navbar-item">About</a>
+                    <a className="navbar-item">Jobs</a>
+                    <a className="navbar-item">Contact</a>
+                    <hr className="navbar-divider" />
+                    <button id="he-signout-button" className="navbar-item" onClick={firebase.doSignOut}>
+                      Sign out
+                    </button>
+                  </div>
+                </div>
+        
       );
     }
     return (
