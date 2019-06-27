@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
 import { baseUrl } from "../../routes/constants";
-import { PasswordForgotForm, Loader } from "../../components";
+import { PasswordForgotForm, Spinner } from "../../components";
 import { useFirebase } from "../../context/firebase-context";
 import { useUser } from "../../context/user-context";
 
@@ -12,7 +12,7 @@ const View = () => {
   const { initializing, user } = useUser();
 
   if (initializing) {
-    return <Loader />;
+    return <Spinner />;
   }
 
   if (user) {

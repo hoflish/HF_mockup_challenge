@@ -1,8 +1,6 @@
 import React from "react";
 
-import "./loader.scss";
-
-const Loader = props => {
+const Spinner = props => {
   return (
     <div className="he-spinner-wrapper">
       <div className="he-spinner" />
@@ -10,4 +8,4 @@ const Loader = props => {
   );
 };
 
-export default Loader;
+export default Spinner;

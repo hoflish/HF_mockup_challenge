@@ -4,14 +4,14 @@ import { Link, Redirect } from "react-router-dom";
 import { useFirebase } from "../../context/firebase-context";
 import { useUser } from "../../context/user-context";
 import { baseUrl, signUpUrl, passwordForgotUrl } from "../../routes/constants";
-import { Loader, SignInForm } from "../../components";
+import { Spinner, SignInForm } from "../../components";
 
 const View = () => {
   const { firebase } = useFirebase();
   const { user, initializing } = useUser();
 
   if (initializing) {
-    return <Loader />;
+    return <Spinner />;
   }
   if (user) {
     return <Redirect to={baseUrl} />;

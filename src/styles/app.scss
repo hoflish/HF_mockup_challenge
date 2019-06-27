@@ -13,10 +13,12 @@
 }
 
 #he-signout-button {
+    font-size: 0.875rem;
     width: 100%;
     border: 0;
     background: none;
     cursor: pointer;
+    text-align: left;
 }
 
 #he-signout-button:hover {
@@ -31,6 +33,40 @@
 .navbar-end svg {
   height: 32px;
 }
+
+.navbar-burger {
+  margin-left: 0;
+}
+
+//------ spinner ---------
+.he-spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.he-spinner {
+  display: inline-block;
+  border: 4px solid rgba(124, 124, 124, 0.1);
+  border-left-color: #7983ff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1.2s linear infinite;
+}
+
+/* --------- spinner end ----------
 
 //-----------
 
