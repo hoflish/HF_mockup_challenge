@@ -7,3 +7,5 @@ export { default as FormField } from "./FormField";
 export { default as PasswordForgotForm } from "./PasswordForgotForm";
 export { default as Avatar } from "./Avatar";
 export { default as CircleLoader } from "./CircleLoader";
+export { default as SettingsPassword } from "./SettingsPassword";
+export { default as ReauthenticationForm } from "./ReauthenticationForm";
