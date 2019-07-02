@@ -4,7 +4,7 @@ export { default as Spinner } from "./Spinner";
 export { default as SignInForm } from "./SignInForm";
 export { default as SignUpForm } from "./SignUpForm";
 export { default as FormField } from "./FormField";
-export { default as PasswordForgotForm } from "./PasswordForgotForm";
+export { default as PasswordResetForm } from "./PasswordResetForm";
 export { default as Avatar } from "./Avatar";
 export { default as CircleLoader } from "./CircleLoader";
 export { default as SettingsPassword } from "./SettingsPassword";

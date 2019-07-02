@@ -1,4 +1,5 @@
 import React from "react";
+
 import { FormField } from "..";
 
 const INITIAL_STATE = {
@@ -6,7 +7,7 @@ const INITIAL_STATE = {
   error: ""
 };
 
-class PasswordForgotForm extends React.Component {
+class PasswordResetForm extends React.Component {
   state = {
     ...INITIAL_STATE
   };
@@ -64,4 +65,4 @@ class PasswordForgotForm extends React.Component {
   }
 }
 
-export default PasswordForgotForm;
+export default PasswordResetForm;

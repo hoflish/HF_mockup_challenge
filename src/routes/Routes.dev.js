@@ -6,7 +6,7 @@ import * as ROUTES from "./constants";
 import { Home } from "../views/Home";
 import { SignUp } from "../views/SignUp";
 import { SignIn } from "../views/SignIn";
-import { PasswordForgot } from "../views/PasswordForgot";
+import { PasswordReset } from "../views/PasswordReset";
 import { Settings } from "../views/Settings";
 
 const Routes = () => (
@@ -18,7 +18,7 @@ const Routes = () => (
     <Route path={ROUTES.settingsUrl} component={Settings} />
     <Route path={ROUTES.signInUrl} component={SignIn} />
     <Route path={ROUTES.signUpUrl} component={SignUp} />
-    <Route path={ROUTES.passwordForgotUrl} component={PasswordForgot} />
+    <Route path={ROUTES.passwordResetUrl} component={PasswordReset} />
     <Route component={() => <div>Not found</div>} />
     <DevTools />
   </Switch>

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
 import { baseUrl } from "../../routes/constants";
-import { PasswordForgotForm, Spinner } from "../../components";
+import { PasswordResetForm, Spinner } from "../../components";
 import { useFirebase } from "../../context/firebase-context";
 import { useUser } from "../../context/user-context";
+
+// TODO: use global notification
 
 const View = () => {
   const [message, setMessage] = useState("");
@@ -35,12 +37,12 @@ const View = () => {
               ) : null}
               <div style={{ marginBottom: "20px" }}>
                 <h1 className="is-size-4">Forgot your password?</h1>
-                <p style={styles.text}>
+                <p className="is-size-6" style={{ margin: "8px 0" }}>
                   Enter your email address to reset your password. You may need
                   to check your spam folder.
                 </p>
               </div>
-              <PasswordForgotForm
+              <PasswordResetForm
                 firebase={firebase}
                 onEmailSent={value => setMessage(value)}
               />
@@ -53,8 +55,7 @@ const View = () => {
 };
 
 const styles = {
-  form: { width: "500px", margin: "0 auto" },
-  text: { fontSize: "13px", margin: "10px 0" }
+  form: { width: "500px", margin: "0 auto" }
 };
 
 export default View;
