@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { signInUrl, signUpUrl } from "../../routes/constants";
+import { signInUrl, signUpUrl, settingsUrl } from "../../routes/constants";
 import { FirebaseConsumer } from "../../context/firebase-context";
-import { Avatar } from "..";
-import CircleLoader from "../CircleLoader";
+import { Avatar, CircleLoader } from "..";
 
 class Header extends React.Component {
   state = {
@@ -42,24 +41,11 @@ class Header extends React.Component {
     if (user) {
       return (
         <div className="navbar-item has-dropdown is-hoverable">
-          {!isMobile && (
-            <a>
-              <Avatar photoUrl={user.photoUrl} />
-            </a>
-          )}
+          {!isMobile && <Avatar photoUrl={user.photoUrl} />}
           <div className="navbar-dropdown is-right">
-            <a className="navbar-item" style={{ display: "flex" }}>
-              {isMobile ? (
-                <>
-                  <Avatar photoUrl={user.photoUrl} size={24} />
-                  <span style={{ margin: "2px 0 0 4px" }}>Your profile</span>
-                </>
-              ) : (
-                "Your profile"
-              )}
-            </a>
-            <a className="navbar-item">Dashboard</a>
-            <a className="navbar-item">Jobs</a>
+            <Link to={settingsUrl} className="navbar-item">
+              Settings
+            </Link>
 
             <hr className="navbar-divider" />
             <button

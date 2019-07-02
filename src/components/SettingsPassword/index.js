@@ -20,13 +20,8 @@ class SettingsPassword extends React.Component {
     this.setState({ fields, fieldErrors });
   };
 
-  onSubmit = event => {
-    const { fields } = this.state;
+  validate = fields => {
     const errors = {};
-
-    event.preventDefault();
-
-    // form validation
     if (!fields.password) errors.password = "Password can't be blank";
     if (!fields.password_confirmation)
       errors.password_confirmation = "Password confirmation is required";
@@ -43,13 +38,20 @@ class SettingsPassword extends React.Component {
     if (fields.password && fields.password.length < 6) {
       errors.password = "Password should be at least 6 characters";
     }
+    return errors;
+  };
 
-    this.setState({ fieldErrors: errors });
+  onSubmit = event => {
+    const { fields } = this.state;
+    const fieldErrors = this.validate(fields);
 
-    if (Object.keys(errors).length) return;
+    this.setState({ fieldErrors });
 
-    // handle firebase requests
+    if (Object.keys(fieldErrors).length) return;
+
     this.onUpdatePassword(fields.password);
+
+    event.preventDefault();
   };
 
   onUpdatePassword = password => {

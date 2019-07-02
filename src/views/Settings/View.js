@@ -1,12 +1,22 @@
 import React from "react";
 import { NavLink, Redirect, Route } from "react-router-dom";
 
-import { SettingsPassword } from "../../components";
+import { SettingsPassword, Spinner } from "../../components";
 import { useFirebase } from "../../context/firebase-context";
+import { useUser } from "../../context/user-context";
+import { signInUrl } from "../../routes/constants";
 
 // TODO: arrange routes into an array
 const View = ({ match }) => {
   const { firebase } = useFirebase();
+  const { user, initializing } = useUser();
+
+  if (initializing) {
+    return <Spinner />;
+  }
+  if (!user) {
+    return <Redirect to={signInUrl} />;
+  }
   return (
     <section className="section">
       <div className="container">
