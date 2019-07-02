@@ -1,5 +1,5 @@
 @import "~bulma/bulma.sass";
-
+@import "./_spacing.scss";
 
 .he-signup-form {
   max-width: 380px;
@@ -66,9 +66,23 @@
   animation: spin 1.2s linear infinite;
 }
 
-/* --------- spinner end ----------
+/* --------- spinner end ---------- */
+.he-confirm-password-form,
+.he-password-reset-form {
+  max-width: 380px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+}
 
-//-----------
+.he-text-underline {
+  text-decoration: underline;
+}
+
+
+
+//----------------------------------------------------
 
 .hf-register__section {
   min-height: 100%;

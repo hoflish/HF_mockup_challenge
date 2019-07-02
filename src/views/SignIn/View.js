@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import { useFirebase } from "../../context/firebase-context";
 import { useUser } from "../../context/user-context";
-import { baseUrl, signUpUrl, passwordForgotUrl } from "../../routes/constants";
+import { baseUrl, signUpUrl, passwordResetUrl } from "../../routes/constants";
 import { Spinner, SignInForm } from "../../components";
 
 const View = () => {
@@ -33,7 +33,7 @@ const View = () => {
                 className="subtitle is-6 has-text-centered"
                 style={{ marginTop: "16px" }}
               >
-                <Link to={passwordForgotUrl}>Forgot your password?</Link>
+                <Link to={passwordResetUrl}>Forgot your password?</Link>
               </p>
             </div>
           </div>

@@ -19,7 +19,7 @@ function FirebaseProvider(props) {
   }
 
   useEffect(() => {
-    const unsubscribe = firebase.auth.onAuthStateChanged(onChange);
+    const unsubscribe = firebase.auth().onAuthStateChanged(onChange);
     return () => unsubscribe();
   }, []);
 

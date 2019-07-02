@@ -15,20 +15,34 @@ class Firebase {
     if (!firebase.apps.length) {
       firebase.initializeApp(firebaseConfig);
     }
-    this.auth = firebase.auth();
+    this.auth = firebase.auth;
   }
 
+  get currentUser() {
+    return this.auth().currentUser;
+  }
+
+  getCredential = password => {
+    return this.auth.EmailAuthProvider.credential(
+      this.currentUser.email,
+      password
+    );
+  };
+
   doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+    this.auth().createUserWithEmailAndPassword(email, password);
 
   doSignInWithEmailAndPassword = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+    this.auth().signInWithEmailAndPassword(email, password);
 
-  doSignOut = () => this.auth.signOut();
+  doSignOut = () => this.auth().signOut();
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  doPasswordReset = email => this.auth().sendPasswordResetEmail(email);
 
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
+  doPasswordUpdate = password => this.currentUser.updatePassword(password);
+
+  doReauthenticationWithCredential = credential =>
+    this.currentUser.reauthenticateWithCredential(credential);
 }
 
 export default Firebase;
