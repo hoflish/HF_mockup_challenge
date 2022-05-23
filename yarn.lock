@@ -3122,8 +3122,8 @@ detect-port-alt@1.1.6:
     debug "^2.6.0"
 
 dexie@next:
-  version "3.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/dexie/-/dexie-3.0.0-alpha.8.tgz#f4cd733c0c120816a73a6eac2157131af3bc7dd3"
+  version "4.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/dexie/-/dexie-4.0.0-alpha.3.tgz#0f8ee594a3015329414fae1f64ef8d62b96871a4"
 
 diff-sequences@^24.3.0:
   version "24.3.0"
